@@ -7,20 +7,18 @@
 </template>
 
 <script>
-import LayoutOverlay from './layouts/LayoutOverlay'
+import LayoutEmpty from './layouts/LayoutEmpty'
 import LayoutMain from './layouts/LayoutMain'
-import PageNotFound from './layouts/PageNotFound'
 
 export default {
   name: 'App',
   components: {
-    LayoutOverlay,
+    LayoutEmpty,
     LayoutMain,
-    PageNotFound,
   },
   computed: {
     selectedLayout() {
-      return this.$route.path === '/' ? 'page-not-found' : `layout-${this.$route.meta.layout}` || 'layout-overlay'
+      return `layout-${this.$route.meta.layout}` || 'layout-empty'
     },
   },
 }

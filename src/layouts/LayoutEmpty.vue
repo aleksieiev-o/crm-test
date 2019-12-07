@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'LayoutOverlay',
+  name: 'LayoutEmpty',
 }
 </script>
 
