@@ -1,10 +1,10 @@
 <template>
   <div class="app-main-layout">
-    <main-navbar/>
+    <main-navbar @sidebarAction="isShowSidebar = !isShowSidebar"/>
 
-    <main-saidbar/>
+    <main-sidebar :isShowSidebar="isShowSidebar"/>
 
-    <main class="app-content">
+    <main class="app-content" :class="{ 'full': !isShowSidebar }">
       <div class="app-page">
         <router-view/>
       </div>
@@ -16,19 +16,18 @@
 
 <script>
 import MainNavbar from '../components/MainNavbar'
-import MainSaidbar from '../components/MainSaidbar'
+import MainSidebar from '../components/MainSidebar'
 import MainActionButton from '../components/MainActionButton'
 
 export default {
   name: 'LayoutMain',
   components: {
     MainNavbar,
-    MainSaidbar,
+    MainSidebar,
     MainActionButton,
   },
+  data: () => ({
+    isShowSidebar: true,
+  }),
 }
 </script>
-
-<style lang="scss">
-
-</style>

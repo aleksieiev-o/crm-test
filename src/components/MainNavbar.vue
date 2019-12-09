@@ -2,48 +2,56 @@
   <nav class="navbar orange lighten-1">
     <div class="nav-wrapper">
       <div class="navbar-left">
-        <a href="#">
-          <i class="material-icons black-text">dehaze</i>
+        <a href="#" @click.prevent="$emit('sidebarAction')">
+          <i class="material-icons black-text">menu</i>
         </a>
-        <span class="black-text">12.12.12</span>
+        <span class="black-text">{{ date | date('datetime') }}</span>
       </div>
 
-      <ul class="right hide-on-small-and-down">
-        <li>
-          <a
-            class="dropdown-trigger black-text"
-            href="#"
-            data-target="dropdown"
-          >
-            USER NAME
-            <i class="material-icons right">arrow_drop_down</i>
-          </a>
-
-          <ul id='dropdown' class='dropdown-content'>
-            <li>
-              <a href="#" class="black-text">
-                <i class="material-icons">account_circle</i>Профиль
-              </a>
-            </li>
-            <li class="divider" tabindex="-1"></li>
-            <li>
-              <a href="#" class="black-text">
-                <i class="material-icons">assignment_return</i>Выйти
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+      <drop-down-list
+      :list-options="{ coverTrigger: false, alignment: 'right' }"
+      :list-content="navBarDropdownList"/>
     </div>
   </nav>
 </template>
 
 <script>
+import DropDownList from './DropDownList'
+
 export default {
   name: 'MainNavbar',
+  components: {
+    DropDownList,
+  },
+  mounted() {
+    this.interval = setInterval(() => {
+      this.date = new Date()
+    }, 1000)
+  },
+  beforeDestroy() {
+    clearInterval(this.interval)
+  },
+  computed: {
+    navBarDropdownList() {
+      return [
+        {
+          value: 0,
+          path: '/profile',
+          title: 'Профиль',
+          icon: 'account_circle',
+        },
+        {
+          value: 1,
+          path: '/login?message=logout',
+          title: 'Выйти',
+          icon: 'assignment_return',
+        },
+      ]
+    },
+  },
+  data: () => ({
+    date: new Date(),
+    interval: null,
+  }),
 }
 </script>
-
-<style lang="scss">
-
-</style>
