@@ -58,13 +58,6 @@ const routes = [
     meta: { layout: 'main' },
     component: () => import('../views/AppHome'),
   },
-  {
-    path: '*',
-    name: 'home',
-    redirect: 'home',
-    meta: { layout: 'main' },
-    component: () => import('../views/AppHome'),
-  },
 ]
 
 const router = new VueRouter({
