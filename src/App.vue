@@ -27,4 +27,11 @@ export default {
 <style lang="scss">
 @import "~materialize-css/dist/css/materialize.min";
 @import "assets/style";
+  #toast-container {
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    top: auto;
+    right: auto;
+  }
 </style>

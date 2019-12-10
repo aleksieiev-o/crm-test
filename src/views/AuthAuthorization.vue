@@ -11,8 +11,8 @@
               || ($v.email.$dirty && !$v.email.email) }">
         <label for="email">Email</label>
         <small
-        v-if="$v.email.$dirty && !$v.email.required"
-        class="helper-text invalid">
+          v-if="$v.email.$dirty && !$v.email.required"
+          class="helper-text invalid">
           Обязательное для заполнения поле
         </small>
         <small
@@ -31,13 +31,13 @@
             || ($v.password.$dirty && $v.password.minLength < 6) }">
         <label for="password">Пароль</label>
         <small
-        v-if="$v.password.$dirty && !$v.password.required"
-        class="helper-text invalid">
-          Введите пароль
+          v-if="$v.password.$dirty && !$v.password.required"
+          class="helper-text invalid">
+          Обязательное для заполнения поле
         </small>
         <small
-        v-else-if="$v.password.$dirty && $v.password.minLength < 6"
-        class="helper-text invalid">
+          v-else-if="$v.password.$dirty && $v.password.minLength < 6"
+          class="helper-text invalid">
           Длина пароля не менее {{ $v.password.$params.minLength.min }} символов
         </small>
       </div>
@@ -65,12 +65,18 @@
 
 <script>
 import { email, required, minLength } from 'vuelidate/lib/validators'
+import notification from '../helpers/notificationText'
 
 export default {
   name: 'AuthAuthorization',
   validations: {
     email: { email, required },
     password: { required, minLength: minLength(6) },
+  },
+  mounted() {
+    if (notification[this.$route.query.message]) {
+      this.$message(notification[this.$route.query.message])
+    }
   },
   methods: {
     onSubmit() {
