@@ -10,7 +10,8 @@
 
       <drop-down-list
       :list-options="{ coverTrigger: false, alignment: 'right' }"
-      :list-content="navBarDropdownList"/>
+      :list-content="navBarDropdownList"
+      @dropdownAction="dropdownAction($event)"/>
     </div>
   </nav>
 </template>
@@ -31,6 +32,17 @@ export default {
   beforeDestroy() {
     clearInterval(this.interval)
   },
+  methods: {
+    dropdownAction(val) {
+      if (val === 1) {
+        this.logout()
+      }
+    },
+    async logout() {
+      await this.$store.dispatch('logout')
+      this.$router.push('/login?message=logout')
+    },
+  },
   computed: {
     navBarDropdownList() {
       return [
@@ -39,12 +51,14 @@ export default {
           path: '/profile',
           title: 'Профиль',
           icon: 'account_circle',
+          func: '',
         },
         {
           value: 1,
           path: '/login?message=logout',
           title: 'Выйти',
           icon: 'assignment_return',
+          func: this.$emit('logout'),
         },
       ]
     },

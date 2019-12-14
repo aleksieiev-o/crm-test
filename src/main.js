@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuelidate from 'vuelidate'
 
+import firebase from 'firebase/app'
+
 import App from './App'
 import router from './router'
 import store from './store'
@@ -10,6 +12,9 @@ import dateFilter from './filters/dateFilter'
 
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
+import 'firebase/auth'
+import 'firebase/database'
+import 'firebase/analytics'
 
 Vue.use(Vuelidate)
 Vue.use(notificationsMessage)
@@ -18,8 +23,26 @@ Vue.filter('date', dateFilter)
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app')
+firebase.initializeApp({
+  apiKey: 'AIzaSyDENzKF8oLWE7Bp5i2bIps9SB3mSfYKUSg',
+  authDomain: 'vue-test-crm-47bbc.firebaseapp.com',
+  databaseURL: 'https://vue-test-crm-47bbc.firebaseio.com',
+  projectId: 'vue-test-crm-47bbc',
+  storageBucket: 'vue-test-crm-47bbc.appspot.com',
+  messagingSenderId: '282156607592',
+  appId: '1:282156607592:web:2ae476beb6856bf5ab73dd',
+  measurementId: 'G-77FH4JTGTC',
+})
+firebase.analytics()
+
+let app = null
+
+firebase.auth().onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      router,
+      store,
+      render: h => h(App),
+    }).$mount('#app')
+  }
+})

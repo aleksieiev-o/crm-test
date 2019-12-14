@@ -7,7 +7,7 @@
         data-target="dropdown"
         ref="dropdown"
       >
-        USER NAME
+        <!--{{ getUserInfo.name }}-->NAME
         <i class="material-icons right">
           {{ arrow ? 'arrow_drop_up' : 'arrow_drop_down' }}
         </i>
@@ -17,12 +17,12 @@
         <template v-for="(item, key) of listContent" >
           <li
           :key="key">
-            <router-link
-            :to="item.path"
+            <a
+            @click.prevent="$emit('dropdownAction', (item.value))"
             class="black-text">
               <i class="material-icons">{{ item.icon }}</i>
               {{ item.title }}
-            </router-link>
+            </a>
           </li>
         </template>
       </ul>
@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'DropDownList',
   mounted() {
@@ -64,6 +66,11 @@ export default {
         },
       ],
     },
+  },
+  computed: {
+    ...mapGetters({
+      getUserInfo: 'getUserInfo',
+    }),
   },
   data: () => ({
     arrow: false,

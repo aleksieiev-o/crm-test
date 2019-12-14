@@ -14,6 +14,7 @@ module.exports = {
     indent: ['error', 2],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
+    'no-empty': 0,
   },
   parserOptions: {
     parser: 'babel-eslint',
