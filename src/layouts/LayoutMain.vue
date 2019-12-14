@@ -1,23 +1,31 @@
 <template>
   <div class="app-main-layout">
-    <main-navbar @sidebarAction="isShowSidebar = !isShowSidebar"/>
+    <pre-loader v-if="!getUInfo"/>
 
-    <main-sidebar :isShowSidebar="isShowSidebar"/>
+    <template v-else>
+      <main-navbar
+        :userInfo="getUInfo"
+        @sidebarAction="isShowSidebar = !isShowSidebar"/>
 
-    <main class="app-content" :class="{ 'full': !isShowSidebar }">
-      <div class="app-page">
-        <router-view/>
-      </div>
-    </main>
+      <main-sidebar :isShowSidebar="isShowSidebar"/>
 
-    <main-action-button/>
+      <main class="app-content" :class="{ 'full': !isShowSidebar }">
+        <div class="app-page">
+          <router-view/>
+        </div>
+      </main>
+
+      <main-action-button/>
+    </template>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import MainNavbar from '../components/MainNavbar'
 import MainSidebar from '../components/MainSidebar'
 import MainActionButton from '../components/MainActionButton'
+import PreLoader from '../components/PreLoader'
 
 export default {
   name: 'LayoutMain',
@@ -25,6 +33,17 @@ export default {
     MainNavbar,
     MainSidebar,
     MainActionButton,
+    PreLoader,
+  },
+  async mounted() {
+    if (!this.getUInfo) {
+      await this.$store.dispatch('loadUInfo')
+    }
+  },
+  computed: {
+    ...mapGetters({
+      getUInfo: 'getUInfo',
+    }),
   },
   data: () => ({
     isShowSidebar: true,

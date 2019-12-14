@@ -7,7 +7,7 @@
         data-target="dropdown"
         ref="dropdown"
       >
-        <!--{{ getUserInfo.name }}-->NAME
+        {{ userInfo.name }}
         <i class="material-icons right">
           {{ arrow ? 'arrow_drop_up' : 'arrow_drop_down' }}
         </i>
@@ -31,8 +31,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'DropDownList',
   mounted() {
@@ -54,6 +52,12 @@ export default {
     this.dropdown = null
   },
   props: {
+    userInfo: {
+      type: Object,
+      default() {
+        return { name: 'Empty' }
+      },
+    },
     listOptions: {
       type: Object,
       default: () => {},
@@ -66,11 +70,6 @@ export default {
         },
       ],
     },
-  },
-  computed: {
-    ...mapGetters({
-      getUserInfo: 'getUserInfo',
-    }),
   },
   data: () => ({
     arrow: false,

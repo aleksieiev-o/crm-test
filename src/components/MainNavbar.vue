@@ -11,6 +11,7 @@
       <drop-down-list
       :list-options="{ coverTrigger: false, alignment: 'right' }"
       :list-content="navBarDropdownList"
+      :userInfo="userInfo"
       @dropdownAction="dropdownAction($event)"/>
     </div>
   </nav>
@@ -31,6 +32,14 @@ export default {
   },
   beforeDestroy() {
     clearInterval(this.interval)
+  },
+  props: {
+    userInfo: {
+      type: Object,
+      default() {
+        return { name: 'Empty' }
+      },
+    },
   },
   methods: {
     dropdownAction(val) {

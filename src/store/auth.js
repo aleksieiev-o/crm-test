@@ -3,17 +3,10 @@ import firebase from 'firebase/app'
 
 export default {
   state: {
-    userInfo: null,
   },
   getters: {
-    getUserInfo(state) {
-      return state.userInfo
-    },
   },
   mutations: {
-    setUserInfo(state, payload) {
-      state.userInfo = payload
-    },
   },
   actions: {
     async login({ commit, dispatch }, { email, password }) {
@@ -25,8 +18,9 @@ export default {
         throw e
       }
     },
-    async logout() {
+    async logout({ commit }) {
       await firebase.auth().signOut()
+      commit('clearUInfo')
     },
     async register({ commit, dispatch }, { email, password, name }) {
       try {
@@ -36,9 +30,6 @@ export default {
           bill: 10000,
           name,
         })
-        // await commit('setUserInfo', {
-        //   userId, name, email, password,
-        // })
       } catch (e) {
         commit('setError', e)
         throw e
