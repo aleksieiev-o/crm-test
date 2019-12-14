@@ -25,7 +25,6 @@ import { mapGetters } from 'vuex'
 import MainNavbar from '../components/MainNavbar'
 import MainSidebar from '../components/MainSidebar'
 import MainActionButton from '../components/MainActionButton'
-import PreLoader from '../components/PreLoader'
 
 export default {
   name: 'LayoutMain',
@@ -33,7 +32,6 @@ export default {
     MainNavbar,
     MainSidebar,
     MainActionButton,
-    PreLoader,
   },
   async mounted() {
     if (!this.getUInfo) {
@@ -50,3 +48,9 @@ export default {
   }),
 }
 </script>
+
+<style lang="scss">
+  .app-content {
+    height: 100vh;
+  }
+</style>

@@ -9,7 +9,7 @@
       </div>
 
       <drop-down-list
-      :list-options="{ coverTrigger: false, alignment: 'right' }"
+      :list-options="{ coverTrigger: false, alignment: 'right', constrainWidth: false }"
       :list-content="navBarDropdownList"
       :userInfo="userInfo"
       @dropdownAction="dropdownAction($event)"/>
@@ -60,14 +60,12 @@ export default {
           path: '/profile',
           title: 'Профиль',
           icon: 'account_circle',
-          func: '',
         },
         {
           value: 1,
           path: '/login?message=logout',
           title: 'Выйти',
           icon: 'assignment_return',
-          func: this.$emit('logout'),
         },
       ]
     },

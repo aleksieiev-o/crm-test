@@ -9,6 +9,7 @@ import store from './store'
 
 import notificationsMessage from './helpers/notificationMessage'
 import dateFilter from './filters/dateFilter'
+import courseFilter from './filters/courseFilter'
 
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
@@ -16,10 +17,15 @@ import 'firebase/auth'
 import 'firebase/database'
 import 'firebase/analytics'
 
+import PreLoader from './components/PreLoader'
+
 Vue.use(Vuelidate)
 Vue.use(notificationsMessage)
 
 Vue.filter('date', dateFilter)
+Vue.filter('course', courseFilter)
+
+Vue.component('PreLoader', PreLoader)
 
 Vue.config.productionTip = false
 
