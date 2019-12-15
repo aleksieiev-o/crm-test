@@ -21,6 +21,7 @@ export default {
     async logout({ commit }) {
       await firebase.auth().signOut()
       commit('clearUInfo')
+      commit('clearCategories')
     },
     async register({ commit, dispatch }, { email, password, name }) {
       try {

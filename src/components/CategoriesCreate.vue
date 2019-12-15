@@ -11,11 +11,11 @@
             id="createName"
             type="text"
             v-model="name"
-            :class="{ invalid: $v.name.$dirty && !$v.name.required }"
+            :class="{ invalid: validateName }"
           >
           <label for="createName">Название</label>
           <span
-            v-if="$v.name.$dirty && !$v.name.required"
+            v-if="validateName"
             class="helper-text invalid">Введите название категории</span>
         </div>
 
@@ -24,11 +24,11 @@
             id="createLimit"
             type="number"
             v-model.number="limit"
-            :class="{ invalid: $v.limit.$dirty && !$v.limit.minValue }"
+            :class="{ invalid: validateLimit }"
           >
           <label for="createLimit">Лимит</label>
           <span
-            v-if="$v.limit.$dirty && !$v.limit.minValue"
+            v-if="validateLimit"
             class="helper-text invalid">
             Минимальное значение {{ $v.limit.$params.minValue.min }}
           </span>
@@ -63,13 +63,11 @@ export default {
         return
       }
 
-      const formData = {
-        name: this.name,
-        limit: this.limit,
-      }
-
       try {
-        const category = await this.$store.dispatch('createCategory', formData)
+        const category = await this.$store.dispatch('createCategory', {
+          name: this.name,
+          limit: this.limit,
+        })
         this.resetCategoryForm(category)
       } catch (e) {}
     },
@@ -78,7 +76,15 @@ export default {
       this.limit = 100
       this.$v.reset()
       this.$message('Категория создана')
-      this.$emit('createCategory', val)
+      this.$emit('updateCategoryList', val)
+    },
+  },
+  computed: {
+    validateName() {
+      return this.$v.name.$dirty && !this.$v.name.required
+    },
+    validateLimit() {
+      return this.$v.limit.$dirty && !this.$v.limit.minValue
     },
   },
   data: () => ({

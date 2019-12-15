@@ -85,13 +85,11 @@ export default {
         return
       }
 
-      const formData = {
-        email: this.email,
-        password: this.password,
-      }
-
       try {
-        await this.$store.dispatch('login', formData)
+        await this.$store.dispatch('login', {
+          email: this.email,
+          password: this.password,
+        })
         await this.$router.push('/')
       } catch (e) {}
     },

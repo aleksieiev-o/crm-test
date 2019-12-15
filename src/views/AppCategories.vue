@@ -6,10 +6,17 @@
 
     <section>
       <div class="row">
-        <template>
-          <categories-create @createCategory="updateCategoryList($event)"/>
+        <pre-loader v-if="loading"/>
 
-          <categories-edit/>
+        <template v-else>
+          <categories-create
+            @updateCategoryList="updateCategoryList($event)"/>
+
+          <categories-edit
+            v-if="getCategories.length > 0"
+            :categories="getCategories"/>
+
+          <p class="center" v-else>Категорий нет</p>
         </template>
       </div>
     </section>
@@ -17,6 +24,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import CategoriesCreate from '../components/CategoriesCreate'
 import CategoriesEdit from '../components/CategoriesEdit'
 
@@ -26,13 +34,25 @@ export default {
     CategoriesCreate,
     CategoriesEdit,
   },
+  async mounted() {
+    await this.$store.dispatch('loadCategories')
+    this.loading = false
+  },
   methods: {
     updateCategoryList(val) {
+      this.loading = true
       this.categoryList.push(val)
+      this.loading = false
     },
+  },
+  computed: {
+    ...mapGetters({
+      getCategories: 'getCategories',
+    }),
   },
   data: () => ({
     categoryList: [],
+    loading: true,
   }),
 }
 </script>
