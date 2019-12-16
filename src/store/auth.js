@@ -9,19 +9,18 @@ export default {
   mutations: {
   },
   actions: {
-    async login({ commit, dispatch }, { email, password }) {
+    async login({ commit }, { email, password }) {
       try {
         await firebase.auth().signInWithEmailAndPassword(email, password)
-        console.log(commit, dispatch)
       } catch (e) {
-        commit('setError', e)
+        commit('_setError', e)
         throw e
       }
     },
     async logout({ commit }) {
       await firebase.auth().signOut()
-      commit('clearUInfo')
-      commit('clearCategories')
+      commit('_setUInfo', null)
+      commit('_setCategories', [])
     },
     async register({ commit, dispatch }, { email, password, name }) {
       try {
@@ -32,7 +31,7 @@ export default {
           name,
         })
       } catch (e) {
-        commit('setError', e)
+        commit('_setError', e)
         throw e
       }
     },

@@ -10,7 +10,7 @@
 
         <template v-else>
           <categories-create
-            @updateCategoryList="updateCategoryList($event)"/>
+            @updateCategories="updateCategories"/>
 
           <categories-edit
             v-if="getCategories.length > 0"
@@ -29,7 +29,7 @@ import CategoriesCreate from '../components/CategoriesCreate'
 import CategoriesEdit from '../components/CategoriesEdit'
 
 export default {
-  name: 'UserLogin',
+  name: 'AppCategories',
   components: {
     CategoriesCreate,
     CategoriesEdit,
@@ -39,10 +39,11 @@ export default {
     this.loading = false
   },
   methods: {
-    updateCategoryList(val) {
+    async updateCategories() {
       this.loading = true
-      this.categoryList.push(val)
+      await this.$store.dispatch('loadCategories')
       this.loading = false
+      this.$message('Категория создана')
     },
   },
   computed: {
@@ -51,7 +52,6 @@ export default {
     }),
   },
   data: () => ({
-    categoryList: [],
     loading: true,
   }),
 }

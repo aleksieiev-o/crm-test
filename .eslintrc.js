@@ -15,6 +15,7 @@ module.exports = {
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     'no-empty': 0,
+    'no-underscore-dangle': 0,
   },
   parserOptions: {
     parser: 'babel-eslint',

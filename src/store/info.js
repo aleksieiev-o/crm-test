@@ -11,11 +11,8 @@ export default {
     },
   },
   mutations: {
-    setUInfo(state, payload) {
+    _setUInfo(state, payload) {
       state.uInfo = payload
-    },
-    clearUInfo(state) {
-      state.uInfo = null
     },
   },
   actions: {
@@ -23,7 +20,7 @@ export default {
       try {
         const userId = await dispatch('loadUserId')
         const info = (await firebase.database().ref(`/users/${userId}/info`).once('value')).val()
-        commit('setUInfo', info)
+        commit('_setUInfo', info)
       } catch (e) {}
     },
   },

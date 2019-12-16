@@ -11,11 +11,8 @@ export default {
     },
   },
   mutations: {
-    setCategories(state, payload) {
+    _setCategories(state, payload) {
       state.categories = payload
-    },
-    clearCategories(state) {
-      state.categories = []
     },
   },
   actions: {
@@ -23,9 +20,9 @@ export default {
       try {
         const userId = await dispatch('loadUserId')
         const categories = (await firebase.database().ref(`users/${userId}/categories`).once('value')).val() || {}
-        commit('setCategories', Object.keys(categories).map(key => ({ ...categories[key], id: key })))
+        commit('_setCategories', Object.keys(categories).map(key => ({ ...categories[key], id: key })))
       } catch (e) {
-        commit('setError', e)
+        commit('_setError', e)
         throw e
       }
     },
@@ -33,9 +30,10 @@ export default {
       try {
         const userId = await dispatch('loadUserId')
         const category = await firebase.database().ref(`users/${userId}/categories`).push({ name, limit })
+        await dispatch('loadCategories')
         return { name, limit, id: category.key }
       } catch (e) {
-        commit('setError', e)
+        commit('_setError', e)
         throw e
       }
     },
@@ -45,7 +43,7 @@ export default {
         await firebase.database().ref(`users/${userId}/categories`).child(id).update({ name, limit })
         await dispatch('loadCategories')
       } catch (e) {
-        commit('setError', e)
+        commit('_setError', e)
         throw e
       }
     },

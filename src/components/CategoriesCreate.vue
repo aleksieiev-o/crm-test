@@ -64,19 +64,18 @@ export default {
       }
 
       try {
-        const category = await this.$store.dispatch('createCategory', {
+        await this.$store.dispatch('createCategory', {
           name: this.name,
           limit: this.limit,
         })
-        this.resetCategoryForm(category)
+        this.resetCategoryForm()
       } catch (e) {}
     },
-    resetCategoryForm(val) {
+    resetCategoryForm() {
       this.name = ''
       this.limit = 100
+      this.$emit('updateCategories')
       this.$v.reset()
-      this.$message('Категория создана')
-      this.$emit('updateCategoryList', val)
     },
   },
   computed: {

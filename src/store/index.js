@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
 import auth from './auth'
 import info from './info'
 import category from './category'
@@ -19,11 +20,8 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    setError(state, payload) {
+    _setError(state, payload) {
       state.error = payload
-    },
-    clearError(state) {
-      state.error = null
     },
   },
   actions: {
