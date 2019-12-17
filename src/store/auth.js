@@ -3,10 +3,17 @@ import firebase from 'firebase/app'
 
 export default {
   state: {
+    userId: null,
   },
   getters: {
+    getUserId(state) {
+      return state.getUserId
+    },
   },
   mutations: {
+    _setUserId(state, payload) {
+      state.userId = payload
+    },
   },
   actions: {
     async login({ commit }, { email, password }) {

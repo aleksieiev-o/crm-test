@@ -29,9 +29,18 @@ export default {
     async createCategory({ commit, dispatch }, { name, limit }) {
       try {
         const userId = await dispatch('loadUserId')
-        const category = await firebase.database().ref(`users/${userId}/categories`).push({ name, limit })
+        await firebase.database().ref(`users/${userId}/categories`).push({ name, limit })
         await dispatch('loadCategories')
-        return { name, limit, id: category.key }
+      } catch (e) {
+        commit('_setError', e)
+        throw e
+      }
+    },
+    async createRecord({ commit, dispatch }, payload) {
+      try {
+        const userId = await dispatch('loadUserId')
+        await firebase.database().ref(`users/${userId}/records`).push(payload)
+        // await dispatch('loadCategories')
       } catch (e) {
         commit('_setError', e)
         throw e
