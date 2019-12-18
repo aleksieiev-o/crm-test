@@ -46,6 +46,16 @@ export default {
         throw e
       }
     },
+    async loadRecords({ commit, dispatch }) {
+      try {
+        const userId = await dispatch('loadUserId')
+        const records = (await firebase.database().ref(`users/${userId}/records`).once('value')).val() || {}
+        commit('_setRecords', Object.keys(records).map(key => ({ ...records[key], id: key })))
+      } catch (e) {
+        commit('_setError', e)
+        throw e
+      }
+    },
     async updateCategory({ commit, dispatch }, { id, name, limit }) {
       try {
         const userId = await dispatch('loadUserId')

@@ -8,8 +8,11 @@ import router from './router'
 import store from './store'
 
 import notificationsMessage from './helpers/notificationMessage'
-import dateFilter from './filters/dateFilter'
-import courseFilter from './filters/courseFilter'
+
+import dateFilter from './helpers/filters/dateFilter'
+import courseFilter from './helpers/filters/courseFilter'
+
+import tooltip from './helpers/directives/tooltip'
 
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
@@ -24,6 +27,8 @@ Vue.use(notificationsMessage)
 
 Vue.filter('date', dateFilter)
 Vue.filter('course', courseFilter)
+
+Vue.directive('tooltip', tooltip)
 
 Vue.component('PreLoader', PreLoader)
 
