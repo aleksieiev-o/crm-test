@@ -22,6 +22,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import notification from '../helpers/notificationText'
 import MainNavbar from '../components/MainNavbar'
 import MainSidebar from '../components/MainSidebar'
 import MainActionButton from '../components/MainActionButton'
@@ -41,11 +42,18 @@ export default {
   computed: {
     ...mapGetters({
       getUInfo: 'getUInfo',
+      getError: 'getError',
     }),
   },
   data: () => ({
     isShowSidebar: true,
   }),
+  watch: {
+    getError(fbError) {
+      console.log(fbError)
+      this.$error(notification[fbError.code] || 'Что-то пошло не так...')
+    },
+  },
 }
 </script>
 
