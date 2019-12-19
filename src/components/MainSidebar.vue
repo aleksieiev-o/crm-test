@@ -7,7 +7,7 @@
     exact
     active-class="active"
     :to="item.path">
-      <a class="waves-effect waves-orange pointer">
+      <a class="waves-effect waves-amber darken-3 pointer">
         {{ item.title }}
       </a>
     </router-link>

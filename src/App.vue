@@ -114,6 +114,7 @@ export default {
   }
 
   .page-title {
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 1rem;
@@ -174,5 +175,29 @@ export default {
   .history-chart {
     max-width: 600px;
     margin: 0 auto;
+  }
+
+  .progress {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .btn-float {
+    width: 56px;
+    height: 56px;
+    padding: 0 !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 0;
+  }
+
+  .fixed-action-btn {
+    position: fixed;
+    right: 23px;
+    bottom: 23px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    z-index: 997;
   }
 </style>

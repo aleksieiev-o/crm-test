@@ -65,7 +65,7 @@ export default {
           const persent = 100 * spend / item.limit
           const progressPersent = persent > 100 ? 100 : persent
           // eslint-disable-next-line no-nested-ternary
-          const progressColor = persent < 60 ? 'green' : persent < 100 ? 'yellow' : 'red'
+          const progressColor = persent < 60 ? 'teal' : persent < 100 ? 'amber' : 'red'
           const tooltipVal = item.limit - spend
           const tooltip = `${tooltipVal < 0 ? 'Превышение на' : 'Осталось'} ${courseFilter(Math.abs(tooltipVal))}`
 
