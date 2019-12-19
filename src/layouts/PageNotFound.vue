@@ -7,7 +7,3 @@ export default {
   name: 'PageNotFound',
 }
 </script>
-
-<style lang="scss">
-
-</style>

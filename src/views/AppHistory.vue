@@ -47,7 +47,3 @@ export default {
   name: 'AppHistory',
 }
 </script>
-
-<style lang="scss">
-
-</style>

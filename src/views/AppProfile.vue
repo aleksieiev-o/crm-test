@@ -28,7 +28,3 @@ export default {
   name: 'AppProfile',
 }
 </script>
-
-<style lang="scss">
-
-</style>

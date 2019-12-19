@@ -56,9 +56,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-  .app-content {
-    height: 100vh;
-  }
-</style>

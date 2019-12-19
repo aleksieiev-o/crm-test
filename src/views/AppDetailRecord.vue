@@ -29,7 +29,3 @@ export default {
   name: 'AppDetailRecord',
 }
 </script>
-
-<style lang="scss">
-
-</style>
