@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuelidate from 'vuelidate'
 
+import Paginate from 'vuejs-paginate'
+
 import firebase from 'firebase/app'
 
 import App from './App'
@@ -18,7 +20,6 @@ import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
 import 'firebase/auth'
 import 'firebase/database'
-// import 'firebase/analytics'
 
 import PreLoader from './components/PreLoader'
 
@@ -31,6 +32,7 @@ Vue.filter('course', courseFilter)
 Vue.directive('tooltip', tooltip)
 
 Vue.component('PreLoader', PreLoader)
+Vue.component('PaginateMixin', Paginate)
 
 Vue.config.productionTip = false
 
@@ -44,7 +46,6 @@ firebase.initializeApp({
   appId: '1:282156607592:web:2ae476beb6856bf5ab73dd',
   measurementId: 'G-77FH4JTGTC',
 })
-// firebase.analytics()
 
 let app = null
 
