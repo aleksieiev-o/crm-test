@@ -200,4 +200,8 @@ export default {
     margin-bottom: 0;
     z-index: 997;
   }
+
+  .pagination li.active {
+    background-color: teal;
+  }
 </style>

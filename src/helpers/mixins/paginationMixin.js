@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       page: +this.$route.query.page || 1,
-      pageSize: 3,
+      pageSize: 4,
       pageCount: 0,
       allPages: [],
       currentPages: [],

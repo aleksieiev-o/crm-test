@@ -5,7 +5,7 @@
     </div>
 
     <div class="history-chart">
-      <canvas></canvas>
+      <canvas ref="canvas"/>
     </div>
 
     <pre-loader v-if="loading"/>
@@ -38,6 +38,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { Pie } from 'vue-chartjs'
 import paginationMixin from '../helpers/mixins/paginationMixin'
 import HistoryTable from '../components/HistoryTable'
 
@@ -49,8 +50,46 @@ export default {
   async mounted() {
     await this.$store.dispatch('loadCategories')
     await this.$store.dispatch('loadRecords')
-    this.loading = false
+
     this.createPagination(this.modifiedRecords)
+
+    this.createChart()
+
+    this.loading = false
+  },
+  methods: {
+    createChart() {
+      this.renderChart({
+        labels: this.getCategories.map(item => item.name),
+        datasets: [{
+          label: 'Расходы по категориям',
+          data: this.getCategories.map(item => this.getRecords.reduce((total, val) => {
+            if (val.categoryId === item.id && val.type === 'outcome') {
+              // eslint-disable-next-line no-param-reassign
+              total += +val.amount
+            }
+            return total
+          }, 0)),
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+          ],
+          borderWidth: 1,
+        }],
+      })
+    },
   },
   computed: {
     ...mapGetters({
@@ -75,5 +114,6 @@ export default {
   mixins: [
     paginationMixin,
   ],
+  extends: Pie,
 }
 </script>
