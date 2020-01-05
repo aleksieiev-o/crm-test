@@ -8,42 +8,57 @@
       <canvas></canvas>
     </div>
 
-    <section>
-      <table>
-        <thead>
-        <tr>
-          <th>#</th>
-          <th>Сумма</th>
-          <th>Дата</th>
-          <th>Категория</th>
-          <th>Тип</th>
-          <th>Открыть</th>
-        </tr>
-        </thead>
+    <pre-loader v-if="loading"/>
 
-        <tbody>
-        <tr>
-          <td>1</td>
-          <td>1212</td>
-          <td>12.12.32</td>
-          <td>name</td>
-          <td>
-            <span class="white-text badge red">Расход</span>
-          </td>
-          <td>
-            <button class="btn-small btn">
-              <i class="material-icons">open_in_new</i>
-            </button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+    <p
+      v-else-if="!getRecords.length"
+      class="center">
+      Записей нет
+      <router-link to="/record">
+        Создать запись
+      </router-link>
+    </p>
+
+    <section v-else>
+      <history-table
+      :list="modifiedRecords"/>
     </section>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import HistoryTable from '../components/HistoryTable'
+
 export default {
   name: 'AppHistory',
+  components: {
+    HistoryTable,
+  },
+  async mounted() {
+    await this.$store.dispatch('loadCategories')
+    await this.$store.dispatch('loadRecords')
+    this.loading = false
+  },
+  computed: {
+    ...mapGetters({
+      getCategories: 'getCategories',
+      getRecords: 'getRecords',
+    }),
+    modifiedRecords() {
+      if (this.getRecords && this.getCategories) {
+        return this.getRecords.map(item => ({
+          ...item,
+          categoryName: this.getCategories.find(cat => cat.id === item.categoryId).name,
+          typeClass: item.type === 'income' ? 'teal' : 'red',
+          typeText: item.type === 'income' ? 'Доход' : 'Расход',
+        }))
+      }
+      return null
+    },
+  },
+  data: () => ({
+    loading: true,
+  }),
 }
 </script>

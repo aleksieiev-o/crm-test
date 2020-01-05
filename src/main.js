@@ -18,7 +18,7 @@ import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
 import 'firebase/auth'
 import 'firebase/database'
-import 'firebase/analytics'
+// import 'firebase/analytics'
 
 import PreLoader from './components/PreLoader'
 
@@ -44,7 +44,7 @@ firebase.initializeApp({
   appId: '1:282156607592:web:2ae476beb6856bf5ab73dd',
   measurementId: 'G-77FH4JTGTC',
 })
-firebase.analytics()
+// firebase.analytics()
 
 let app = null
 

@@ -6,7 +6,7 @@
     tag="li"
     exact
     active-class="active"
-    :to="item.path">
+    :to="item.name">
       <a class="waves-effect waves-amber darken-3 pointer">
         {{ item.title }}
       </a>
@@ -27,23 +27,23 @@ export default {
     sidebarLinks() {
       return [
         {
-          path: '/',
+          name: '/',
           title: 'Счет',
         },
         {
-          path: 'history',
+          name: 'history',
           title: 'История',
         },
         {
-          path: 'planning',
+          name: 'planning',
           title: 'Планирование',
         },
         {
-          path: 'record',
+          name: 'record',
           title: 'Новая запись',
         },
         {
-          path: 'categories',
+          name: 'categories',
           title: 'Категории',
         },
       ]
