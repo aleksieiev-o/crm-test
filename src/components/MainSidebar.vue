@@ -30,23 +30,23 @@ export default {
       return [
         {
           name: '/',
-          title: localeFilter('sidebar_bill'),
+          title: localeFilter('bill_title'),
         },
         {
           name: 'history',
-          title: localeFilter('sidebar_history'),
+          title: localeFilter('history_title'),
         },
         {
           name: 'planning',
-          title: localeFilter('sidebar_planning'),
+          title: localeFilter('planning_title'),
         },
         {
           name: 'record',
-          title: localeFilter('sidebar_record'),
+          title: localeFilter('record_title'),
         },
         {
           name: 'categories',
-          title: localeFilter('sidebar_categories'),
+          title: localeFilter('categories_title'),
         },
       ]
     },

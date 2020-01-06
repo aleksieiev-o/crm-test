@@ -2,20 +2,20 @@
   <div class="col s12 m6">
     <div>
       <div class="page-subtitle">
-        <h4>Редактировать</h4>
+        <h4>{{ 'edit' | locale }}</h4>
       </div>
 
       <form @submit.prevent="editCategory">
         <div class="input-field">
           <select ref="select" v-model="currentCategory">
-            <option value="" disabled selected>Категории</option>
+            <option value="" disabled selected>{{ 'categories_title' | locale }}</option>
             <option
               v-for="(item, key) of categories"
               :value="item.id"
               :key="key">{{ item.name }}
             </option>
           </select>
-          <label>Выберите категорию</label>
+          <label>{{ 'category' | locale }}</label>
         </div>
 
         <div class="input-field">
@@ -25,10 +25,10 @@
             v-model="name"
             :class="{ invalid: validateName }"
           >
-          <label for="editName">Название</label>
+          <label for="editName">{{ 'title' | locale }}</label>
           <span
             v-if="validateName"
-            class="helper-text invalid">Введите название категории</span>
+            class="helper-text invalid">{{ 'input_category_validate' | locale }}</span>
         </div>
 
         <div class="input-field">
@@ -38,11 +38,11 @@
             v-model.number="limit"
             :class="{ invalid: validateLimit }"
           >
-          <label for="editLimit">Лимит</label>
+          <label for="editLimit">{{ 'limit' | locale }}</label>
           <span
             v-if="validateLimit"
             class="helper-text invalid">
-            Минимальное значение {{ $v.limit.$params.minValue.min }}
+            {{ 'input_limit_validate' | locale }} {{ $v.limit.$params.minValue.min }}
           </span>
         </div>
 

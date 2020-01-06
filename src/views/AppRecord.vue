@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Новая запись</h3>
+      <h3>{{ 'record_title' | locale }}</h3>
     </div>
 
     <pre-loader v-if="loading"/>
@@ -21,14 +21,14 @@
       @submit.prevent="createNotation">
       <div class="input-field">
         <select ref="select" v-model="currentCategory">
-          <option value="" disabled selected>Категории</option>
+          <option value="" disabled selected>{{ 'categories_title' | locale }}</option>
           <option
             v-for="(item, key) of getCategories"
             :value="item.id"
             :key="key">{{ item.name }}
           </option>
         </select>
-        <label>Выберите категорию</label>
+        <label>{{ 'category' | locale }}</label>
       </div>
 
       <p
@@ -53,7 +53,7 @@
           v-model.number="amount"
           :class="{ invalid: validateAmount }"
         >
-        <label for="amount">Сумма</label>
+        <label for="amount">{{ 'amount' | locale }}</label>
         <span
           v-if="validateAmount"
           class="helper-text invalid">
@@ -68,14 +68,14 @@
           v-model="description"
           :class="{ invalid: validateDescription }"
         >
-        <label for="description">Описание</label>
+        <label for="description">{{ 'input_description' | locale }}</label>
         <span
           v-if="validateDescription"
-          class="helper-text invalid">Введите описание</span>
+          class="helper-text invalid">{{ 'input_description_validate' | locale }}</span>
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        Создать
+        {{ 'btn_create' | locale }}
         <i class="material-icons right">send</i>
       </button>
     </form>
@@ -85,6 +85,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { required, minValue } from 'vuelidate/lib/validators'
+import localeFilter from '../helpers/filters/localeFilter'
 
 export default {
   name: 'AppRecord',
@@ -173,11 +174,11 @@ export default {
     select: null,
     notationType: [
       {
-        name: 'Доход',
+        name: localeFilter('income'),
         value: 'income',
       },
       {
-        name: 'Расход',
+        name: localeFilter('expense'),
         value: 'outcome',
       },
     ],

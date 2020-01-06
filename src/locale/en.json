@@ -1,14 +1,68 @@
 
 {
-  "sidebar_bill": "Bill",
-  "sidebar_history": "History",
-  "sidebar_planning": "Planning",
-  "sidebar_record": "New record",
-  "sidebar_categories": "Categories",
+  "card_title": "Home accounting",
+
+  "bill_title": "Bill",
+  "bill_currency": "Currency account",
+  "bill_course": "Exchange rates",
+  "bill_currency_c": "Currency",
+  "bill_course_c": "Course",
+  "bill_date_c": "Date",
+
+  "history_title": "History of records",
+
+  "planning_title": "Planning",
+
+  "record_title": "New record",
+  "expense": "Expense",
+  "income": "Income",
+  "prev_page": "Back",
+  "next_page": "Next",
+
+  "categories_title": "Categories",
+
   "profile_title": "Profile",
+
   "btn_update": "Update",
+  "btn_create": "Create",
+  "btn_create_new_record": "Create new record",
+
   "input_name": "Name",
+  "input_description": "Description",
   "input_name_validate": "Enter user name",
+  "input_category_validate": "Enter category name",
+  "input_limit_validate": "Minimum value",
+  "input_description_validate": "Enter description",
+  "input_email_validate": "Enter a valid email",
+  "input_password_validate": "Password length at least",
   "language_title": "Choose language",
-  "exit": "Exit"
+  "rules_input": "I agree with the rules",
+
+  "amount": "Amount",
+  "date": "Date",
+  "category": "Category",
+  "type": "Type",
+  "open": "Open",
+  "title": "Title",
+  "limit": "Limit",
+  "edit": "Edit",
+  "sign_up": "Sign up",
+  "sign_in": "Sign in",
+  "password": "Password",
+  "is_have_account": "Already have an account?",
+  "is_not_have_account": "No account?",
+
+  "excess": "Excess on",
+  "left": "Left",
+  "of": "of",
+
+  "exit": "Exit",
+
+  "required_field": "Required field",
+  
+  "mess_logout": "You are logged out",
+  "mess_login": "Log in or register",
+  "mess_user_not_found": "There is no user record matching this identifier. The user may have been deleted.",
+  "mess_wrong_pass": "The password is incorrect or the user does not have a password.",
+  "mess_use_email": "The email address is already being used by another account."
 }

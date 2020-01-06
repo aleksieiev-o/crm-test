@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Счет</h3>
+      <h3>{{ 'bill_title' | locale }}</h3>
 
       <button
         @click="refreshDatas"

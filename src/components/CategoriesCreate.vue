@@ -2,7 +2,7 @@
   <div class="col s12 m6">
     <div>
       <div class="page-subtitle">
-        <h4>Создать</h4>
+        <h4>{{ 'btn_create' | locale }}</h4>
       </div>
 
       <form @submit.prevent="createCategory">
@@ -13,10 +13,10 @@
             v-model="name"
             :class="{ invalid: validateName }"
           >
-          <label for="createName">Название</label>
+          <label for="createName">{{ 'title' | locale }}</label>
           <span
             v-if="validateName"
-            class="helper-text invalid">Введите название категории</span>
+            class="helper-text invalid">{{ 'input_category_validate' | locale }}</span>
         </div>
 
         <div class="input-field">
@@ -26,16 +26,16 @@
             v-model.number="limit"
             :class="{ invalid: validateLimit }"
           >
-          <label for="createLimit">Лимит</label>
+          <label for="createLimit">{{ 'limit' | locale }}</label>
           <span
             v-if="validateLimit"
             class="helper-text invalid">
-            Минимальное значение {{ $v.limit.$params.minValue.min }}
+            {{ 'input_limit_validate' | locale }} {{ $v.limit.$params.minValue.min }}
           </span>
         </div>
 
         <button class="btn waves-effect waves-light" type="submit">
-          Создать
+          {{ 'btn_create' | locale }}
           <i class="material-icons right">send</i>
         </button>
       </form>

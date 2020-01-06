@@ -1,14 +1,68 @@
 
 {
-  "sidebar_bill": "Счет",
-  "sidebar_history": "История",
-  "sidebar_planning": "Планирование",
-  "sidebar_record": "Новая запись",
-  "sidebar_categories": "Категории",
+  "card_title": "Домашняя бухгалтерия",
+
+  "bill_title": "Счет",
+  "bill_currency": "Счет в валюте",
+  "bill_course": "Курс валют",
+  "bill_currency_c": "Валюта",
+  "bill_course_c": "Курс",
+  "bill_date_c": "Дата",
+
+  "history_title": "История записей",
+
+  "planning_title": "Планирование",
+
+  "record_title": "Новая запись",
+  "expense": "Расход",
+  "income": "Доход",
+  "prev_page": "Назад",
+  "next_page": "Вперед",
+
+  "categories_title": "Категории",
+
   "profile_title": "Профиль",
+
   "btn_update": "Обновить",
+  "btn_create": "Создать",
+  "btn_create_new_record": "Создать новую запись",
+
   "input_name": "Имя",
+  "input_description": "Описание",
   "input_name_validate": "Введите имя пользователя",
+  "input_category_validate": "Введите название категории",
+  "input_limit_validate": "Минимальное значение",
+  "input_description_validate": "Введите описание",
+  "input_email_validate": "Введите корректный email",
+  "input_password_validate": "Длина пароля не менее",
   "language_title": "Выбор языка",
-  "exit": "Выйти"
+  "rules_input": "С правилами согласен",
+
+  "amount": "Сумма",
+  "date": "Дата",
+  "category": "Категория",
+  "type": "Тип",
+  "open": "Открыть",
+  "title": "Название",
+  "limit": "Лимит",
+  "edit": "Редактировать",
+  "sign_up": "Зарегистрироваться",
+  "sign_in": "Войти",
+  "password": "Пароль",
+  "is_have_account": "Уже есть аккаунт?",
+  "is_not_have_account": "Нет аккаунта?",
+
+  "excess": "Превышение на",
+  "left": "Осталось",
+  "of": "из",
+
+  "exit": "Выйти",
+
+  "required_field": "Обязательное для заполнения поле",
+
+  "mess_logout": "Вы вышли из системы",
+  "mess_login": "Войдите в систему или зарегистрируйтесь",
+  "mess_user_not_found": "Нет записи пользователя, соответствующей этому идентификатору. Пользователь, возможно, был удален.",
+  "mess_wrong_pass": "Пароль неверен или у пользователя нет пароля.",
+  "mess_use_email": "Адрес электронной почты уже используется другой учетной записью."
 }

@@ -2,7 +2,7 @@
   <div class="col s12 m6 l4">
     <div class="card bill-card teal">
       <div class="card-content white-text">
-        <span class="card-title">Счет в валюте</span>
+        <span class="card-title">{{ 'bill_currency' | locale }}</span>
 
         <p
           v-for="(item, key) of courses"

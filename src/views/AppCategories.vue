@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Категории</h3>
+      <h3>{{ 'categories_title' | locale }}</h3>
     </div>
 
     <section>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Планирование</h3>
+      <h3>{{ 'planning_title' | locale }}</h3>
       <h4>{{ getUInfo.bill | course }}</h4>
     </div>
 
@@ -20,7 +20,7 @@
       <div v-for="(item, key) of transformData" :key="key">
         <p>
           <strong>{{ item.name }}:</strong>
-          {{ item.spend | course }} из {{ item.limit | course }}
+          {{ item.spend | course }} {{ 'of' | locale }} {{ item.limit | course }}
         </p>
         <div class="progress">
           <div
@@ -38,6 +38,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import courseFilter from '../helpers/filters/courseFilter'
+import localeFilter from '../helpers/filters/localeFilter'
 
 export default {
   name: 'AppPlanning',
@@ -67,7 +68,7 @@ export default {
           // eslint-disable-next-line no-nested-ternary
           const progressColor = persent < 60 ? 'teal' : persent < 100 ? 'amber' : 'red'
           const tooltipVal = item.limit - spend
-          const tooltip = `${tooltipVal < 0 ? 'Превышение на' : 'Осталось'} ${courseFilter(Math.abs(tooltipVal))}`
+          const tooltip = `${tooltipVal < 0 ? localeFilter('excess') : localeFilter('left')} ${courseFilter(Math.abs(tooltipVal))}`
 
           return {
             ...item, progressPersent, progressColor, spend, tooltip,

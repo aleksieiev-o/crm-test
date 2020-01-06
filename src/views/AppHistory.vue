@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>История записей</h3>
+      <h3>{{ 'history_title' | locale }}</h3>
     </div>
 
     <div class="history-chart">
@@ -28,8 +28,8 @@
         v-model="page"
         :page-count="pageCount"
         :click-handler="paginateHandler"
-        :prev-text="'Назад'"
-        :next-text="'Вперед'"
+        :prev-text="'prev_page' | locale"
+        :next-text="'next_page' | locale"
         :container-class="'pagination'"
         :page-class="'waves-effect'"/>
     </section>
@@ -41,6 +41,7 @@ import { mapGetters } from 'vuex'
 import { Pie } from 'vue-chartjs'
 import paginationMixin from '../helpers/mixins/paginationMixin'
 import HistoryTable from '../components/HistoryTable'
+import localeFilter from '../helpers/filters/localeFilter'
 
 export default {
   name: 'AppHistory',
@@ -102,7 +103,7 @@ export default {
           ...item,
           categoryName: this.getCategories.find(cat => cat.id === item.categoryId).name,
           typeClass: item.type === 'income' ? 'teal' : 'red',
-          typeText: item.type === 'income' ? 'Доход' : 'Расход',
+          typeText: item.type === 'income' ? localeFilter('income') : localeFilter('expense'),
         }))
       }
       return null

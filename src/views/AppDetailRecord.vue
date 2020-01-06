@@ -13,9 +13,9 @@
         <div class="col s12 m6">
           <div class="card" :class="[modifiedRecord.typeClass]">
             <div class="card-content white-text">
-              <p>Описание: {{ modifiedRecord.description }}</p>
-              <p>Сумма: {{ modifiedRecord.amount | course('RUB') }}</p>
-              <p>Категория: {{ modifiedRecord.categoryName }}</p>
+              <p>{{ 'input_description' | locale }}: {{ modifiedRecord.description }}</p>
+              <p>{{ 'amount' | locale }}: {{ modifiedRecord.amount | course('RUB') }}</p>
+              <p>{{ 'category' | locale }}: {{ modifiedRecord.categoryName }}</p>
 
               <small>{{ modifiedRecord.date | date('datetime') }}</small>
             </div>
@@ -37,6 +37,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import localeFilter from '../helpers/filters/localeFilter'
 
 export default {
   name: 'AppDetailRecord',
@@ -56,7 +57,7 @@ export default {
           ...this.getRecord,
           categoryName: this.getCategory.name,
           typeClass: this.getRecord.type === 'income' ? 'teal' : 'red',
-          typeText: this.getRecord.type === 'income' ? 'Доход' : 'Расход',
+          typeText: this.getRecord.type === 'income' ? localeFilter('income') : localeFilter('expense'),
         }
       }
       return null
