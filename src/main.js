@@ -13,6 +13,7 @@ import notificationsMessage from './helpers/notificationMessage'
 
 import dateFilter from './helpers/filters/dateFilter'
 import courseFilter from './helpers/filters/courseFilter'
+import localeFilter from './helpers/filters/localeFilter'
 
 import tooltip from './helpers/directives/tooltip'
 
@@ -28,6 +29,7 @@ Vue.use(notificationsMessage)
 
 Vue.filter('date', dateFilter)
 Vue.filter('course', courseFilter)
+Vue.filter('locale', localeFilter)
 
 Vue.directive('tooltip', tooltip)
 

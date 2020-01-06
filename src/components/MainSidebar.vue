@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import localeFilter from '../helpers/filters/localeFilter'
+
 export default {
   name: 'MainSidebar',
   props: {
@@ -28,23 +30,23 @@ export default {
       return [
         {
           name: '/',
-          title: 'Счет',
+          title: localeFilter('sidebar_bill'),
         },
         {
           name: 'history',
-          title: 'История',
+          title: localeFilter('sidebar_history'),
         },
         {
           name: 'planning',
-          title: 'Планирование',
+          title: localeFilter('sidebar_planning'),
         },
         {
           name: 'record',
-          title: 'Новая запись',
+          title: localeFilter('sidebar_record'),
         },
         {
           name: 'categories',
-          title: 'Категории',
+          title: localeFilter('sidebar_categories'),
         },
       ]
     },

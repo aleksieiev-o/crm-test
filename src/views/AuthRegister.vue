@@ -47,7 +47,7 @@
           type="text"
           v-model="name"
         >
-        <label for="name">Имя</label>
+        <label for="name">{{ 'input_name' | locale }}</label>
         <small
           v-if="$v.password.$dirty && !$v.password.required"
           class="helper-text invalid">

@@ -7,7 +7,7 @@
         :userInfo="getUInfo"
         @sidebarAction="isShowSidebar = !isShowSidebar"/>
 
-      <main-sidebar :isShowSidebar="isShowSidebar"/>
+      <main-sidebar :isShowSidebar="isShowSidebar" :key="locale"/>
 
       <main class="app-content" :class="{ 'full': !isShowSidebar }">
         <div class="app-page">
@@ -44,6 +44,9 @@ export default {
       getUInfo: 'getUInfo',
       getError: 'getError',
     }),
+    locale() {
+      return this.$store.getters.getUInfo.locale
+    },
   },
   data: () => ({
     isShowSidebar: true,

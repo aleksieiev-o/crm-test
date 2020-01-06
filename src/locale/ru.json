@@ -1,0 +1,14 @@
+
+{
+  "sidebar_bill": "Счет",
+  "sidebar_history": "История",
+  "sidebar_planning": "Планирование",
+  "sidebar_record": "Новая запись",
+  "sidebar_categories": "Категории",
+  "profile_title": "Профиль",
+  "btn_update": "Обновить",
+  "input_name": "Имя",
+  "input_name_validate": "Введите имя пользователя",
+  "language_title": "Выбор языка",
+  "exit": "Выйти"
+}

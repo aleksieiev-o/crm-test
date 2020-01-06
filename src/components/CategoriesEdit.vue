@@ -18,7 +18,7 @@
           <label>Выберите категорию</label>
         </div>
 
-        <div class="input-field" @submit.prevent="EditCategory">
+        <div class="input-field">
           <input
             id="editName"
             type="text"
@@ -47,7 +47,7 @@
         </div>
 
         <button class="btn waves-effect waves-light" type="submit">
-          Обновить
+          {{ 'btn_update' | locale }}
           <i class="material-icons right">send</i>
         </button>
       </form>

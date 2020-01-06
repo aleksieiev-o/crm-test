@@ -19,6 +19,7 @@
 
 <script>
 import DropDownList from './DropDownList'
+import localeFilter from '../helpers/filters/localeFilter'
 
 export default {
   name: 'MainNavbar',
@@ -43,6 +44,9 @@ export default {
   },
   methods: {
     dropdownAction(val) {
+      if (val === 0) {
+        this.$router.push('/profile')
+      }
       if (val === 1) {
         this.logout()
       }
@@ -58,13 +62,13 @@ export default {
         {
           value: 0,
           path: '/profile',
-          title: 'Профиль',
+          title: localeFilter('profile_title'),
           icon: 'account_circle',
         },
         {
           value: 1,
           path: '/login?message=logout',
-          title: 'Выйти',
+          title: localeFilter('exit'),
           icon: 'assignment_return',
         },
       ]
