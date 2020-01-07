@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuelidate from 'vuelidate'
+import VueMeta from 'vue-meta'
 
 import Paginate from 'vuejs-paginate'
 
@@ -10,6 +11,7 @@ import router from './router'
 import store from './store'
 
 import notificationsMessage from './helpers/notificationMessage'
+import appTitle from './helpers/appTitle'
 
 import dateFilter from './helpers/filters/dateFilter'
 import courseFilter from './helpers/filters/courseFilter'
@@ -25,7 +27,9 @@ import 'firebase/database'
 import PreLoader from './components/PreLoader'
 
 Vue.use(Vuelidate)
+Vue.use(VueMeta)
 Vue.use(notificationsMessage)
+Vue.use(appTitle)
 
 Vue.filter('date', dateFilter)
 Vue.filter('course', courseFilter)

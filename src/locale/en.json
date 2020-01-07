@@ -21,6 +21,12 @@
 
   "profile_title": "Profile",
 
+  "record_detail_title": "Record details",
+
+  "login_title": "Login",
+
+  "registration_title": "Registration",
+
   "btn_update": "Update",
   "btn_create": "Create",
   "btn_create_new_record": "Create new record",
@@ -58,11 +64,18 @@
   "not_categories": "Categories not found",
   "create_category": "Create category",
 
+  "user_name_updated": "Username updated",
+  "category_created": "Category created",
+  "category_updated": "Category updated",
+  "record_created": "Record created",
+  "not_funds_in_account": "Insufficient funds in account",
+
   "excess": "Excess on",
   "left": "Left",
   "of": "of",
 
   "exit": "Exit",
+  "error": "Error",
 
   "required_field": "Required field",
   

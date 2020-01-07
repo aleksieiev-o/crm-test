@@ -79,5 +79,10 @@ export default {
   data: () => ({
     loading: true,
   }),
+  metaInfo() {
+    return {
+      title: this.$title('planning_title'),
+    }
+  },
 }
 </script>

@@ -27,6 +27,7 @@
 import { mapGetters } from 'vuex'
 import CategoriesCreate from '../components/CategoriesCreate'
 import CategoriesEdit from '../components/CategoriesEdit'
+import localeFilter from '../helpers/filters/localeFilter'
 
 export default {
   name: 'AppCategories',
@@ -43,7 +44,7 @@ export default {
       this.loading = true
       await this.$store.dispatch('loadCategories')
       this.loading = false
-      this.$message('Категория создана')
+      this.$message(localeFilter('category_created'))
     },
   },
   computed: {
@@ -54,5 +55,10 @@ export default {
   data: () => ({
     loading: true,
   }),
+  metaInfo() {
+    return {
+      title: this.$title('categories_title'),
+    }
+  },
 }
 </script>

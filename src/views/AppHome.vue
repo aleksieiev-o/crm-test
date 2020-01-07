@@ -60,5 +60,10 @@ export default {
     course: null,
     courses: ['RUB', 'USD', 'EUR'],
   }),
+  metaInfo() {
+    return {
+      title: this.$title('bill_title'),
+    }
+  },
 }
 </script>

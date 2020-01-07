@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="onRegister">
     <div class="card-content">
-      <span class="card-title">CRM</span>
+      <span class="card-title">{{ appName }}</span>
       <div class="input-field">
         <input
           id="email"
@@ -68,6 +68,7 @@
         <button
           class="btn waves-effect waves-light auth-submit"
           type="submit"
+          :disabled="pending"
         >
           {{ 'sign_up' | locale }}
           <i class="material-icons right">send</i>
@@ -101,6 +102,7 @@ export default {
       }
 
       try {
+        this.pending = true
         await this.$store.dispatch('register', {
           email: this.email,
           password: this.password,
@@ -108,6 +110,9 @@ export default {
         })
         await this.$router.push('/')
       } catch (e) {}
+      setTimeout(() => {
+        this.pending = false
+      }, 1000)
     },
   },
   data: () => ({
@@ -115,6 +120,13 @@ export default {
     password: '',
     name: '',
     agree: false,
+    pending: false,
+    appName: process.env.VUE_APP_TITLE,
   }),
+  metaInfo() {
+    return {
+      title: this.$title('registration_title'),
+    }
+  },
 }
 </script>

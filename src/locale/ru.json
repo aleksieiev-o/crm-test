@@ -21,6 +21,12 @@
 
   "profile_title": "Профиль",
 
+  "record_detail_title": "Детали записи",
+
+  "login_title": "Логин",
+
+  "registration_title": "Регистрация",
+
   "btn_update": "Обновить",
   "btn_create": "Создать",
   "btn_create_new_record": "Создать новую запись",
@@ -58,11 +64,18 @@
   "not_categories": "Категорий нет",
   "create_category": "Создать категорию",
 
+  "user_name_updated": "Имя пользователя обновлено",
+  "category_created": "Категория создана",
+  "category_updated": "Категория обновлена",
+  "record_created": "Запись создана",
+  "not_funds_in_account": "Недостаточно средств на счете",
+
   "excess": "Превышение на",
   "left": "Осталось",
   "of": "из",
 
   "exit": "Выйти",
+  "error": "Ошибка",
 
   "required_field": "Обязательное для заполнения поле",
 

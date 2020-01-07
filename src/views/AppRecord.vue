@@ -137,10 +137,10 @@ export default {
 
           await this.$store.dispatch('updateInfo', { bill })
 
-          this.$message('Запись создана')
+          this.$message(localeFilter('record_created'))
           this.resetRecordForm()
         } else {
-          this.$message(`Недостаточно средств на счете (${this.amount - this.getUInfo.bill})`)
+          this.$message(`${localeFilter('not_funds_in_account')} (${this.amount - this.getUInfo.bill})`)
         }
       } catch (e) {}
     },
@@ -187,5 +187,10 @@ export default {
     amount: 1,
     description: '',
   }),
+  metaInfo() {
+    return {
+      title: this.$title('record_title'),
+    }
+  },
 }
 </script>

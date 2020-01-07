@@ -57,6 +57,7 @@
 
 <script>
 import { required, minValue } from 'vuelidate/lib/validators'
+import localeFilter from '../helpers/filters/localeFilter'
 
 export default {
   name: 'CategoriesEdit',
@@ -108,7 +109,7 @@ export default {
           name: this.name,
           limit: this.limit,
         })
-        this.$message('Категория обновлена')
+        this.$message(localeFilter('category_updated'))
       } catch (e) {}
     },
   },

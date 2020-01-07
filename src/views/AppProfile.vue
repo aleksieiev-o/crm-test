@@ -47,6 +47,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { required } from 'vuelidate/lib/validators'
+import localeFilter from '../helpers/filters/localeFilter'
 
 export default {
   name: 'AppProfile',
@@ -77,7 +78,7 @@ export default {
           name: this.name,
           locale: this.isRuLocale ? 'ru-RU' : 'en-US',
         })
-        this.$message('Имя пользователя обновлено')
+        this.$message(localeFilter('user_name_updated'))
         this.pending = false
       } catch (e) {}
     },
@@ -95,6 +96,11 @@ export default {
     isRuLocale: true,
     pending: false,
   }),
+  metaInfo() {
+    return {
+      title: this.$title('profile_title'),
+    }
+  },
 }
 </script>
 

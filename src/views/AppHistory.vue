@@ -112,6 +112,11 @@ export default {
   data: () => ({
     loading: true,
   }),
+  metaInfo() {
+    return {
+      title: this.$title('history_title'),
+    }
+  },
   mixins: [
     paginationMixin,
   ],
