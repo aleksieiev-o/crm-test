@@ -13,9 +13,9 @@
     <p
       v-else-if="!getRecords.length"
       class="center">
-      Записей нет
+      {{ 'not_records' | locale }}
       <router-link to="/record">
-        Создать запись
+        {{ 'create_record' | locale }}
       </router-link>
     </p>
 

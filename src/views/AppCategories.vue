@@ -16,7 +16,7 @@
             v-if="getCategories.length > 0"
             :categories="getCategories"/>
 
-          <p class="center" v-else>Категорий нет</p>
+          <p class="center" v-else>{{ 'not_categories' | locale }}</p>
         </template>
       </div>
     </section>

@@ -9,9 +9,9 @@
     <p
       v-else-if="!getCategories.length"
       class="center">
-      Категорий нет
+      {{ 'not_categories' | locale }}
       <router-link to="/categories">
-        Создать категорию
+        {{ 'create_category' | locale }}
       </router-link>
     </p>
 
@@ -57,7 +57,7 @@
         <span
           v-if="validateAmount"
           class="helper-text invalid">
-          Введите сумму не менее {{ $v.amount.$params.minValue.min }}
+          {{ 'input_amount_validate' | locale }} {{ $v.amount.$params.minValue.min }}
         </span>
       </div>
 

@@ -33,6 +33,7 @@
   "input_description_validate": "Enter description",
   "input_email_validate": "Enter a valid email",
   "input_password_validate": "Password length at least",
+  "input_amount_validate": "Enter a minimum amount",
   "language_title": "Choose language",
   "rules_input": "I agree with the rules",
 
@@ -49,6 +50,13 @@
   "password": "Password",
   "is_have_account": "Already have an account?",
   "is_not_have_account": "No account?",
+  "history_bread_crumbs": "History",
+  "record": "Record",
+  "not_found": "not found",
+  "not_records": "Records not found",
+  "create_record": "Create record",
+  "not_categories": "Categories not found",
+  "create_category": "Create category",
 
   "excess": "Excess on",
   "left": "Left",

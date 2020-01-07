@@ -10,9 +10,9 @@
     <p
       v-else-if="!getCategories.length"
       class="center">
-      Категорий нет
+      {{ 'not_categories' | locale }}
       <router-link to="/categories">
-        Создать категорию
+        {{ 'create_category' | locale }}
       </router-link>
     </p>
 

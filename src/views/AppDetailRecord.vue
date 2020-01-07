@@ -4,7 +4,9 @@
 
     <div v-else-if="getRecord">
       <div class="breadcrumb-wrap">
-        <router-link to="/history" class="breadcrumb">История</router-link>
+        <router-link to="/history" class="breadcrumb">
+          {{ 'history_bread_crumbs' | locale }}
+        </router-link>
         <a class="breadcrumb">
           {{ modifiedRecord.typeText }}
         </a>
@@ -27,9 +29,10 @@
     <p
       v-else
       class="center">
-      Запись id = <strong>{{ $route.params.id }}</strong> не найдена.
+      <!-- eslint-disable-next-line max-len -->
+      {{ 'record' | locale }} id = <strong>{{ $route.params.id }}</strong> {{ 'not_found' | locale }}.
       <router-link to="/history">
-        История
+        {{ 'history_bread_crumbs' | locale }}
       </router-link>
     </p>
   </div>

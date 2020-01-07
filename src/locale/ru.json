@@ -33,6 +33,7 @@
   "input_description_validate": "Введите описание",
   "input_email_validate": "Введите корректный email",
   "input_password_validate": "Длина пароля не менее",
+  "input_amount_validate": "Введите сумму не менее",
   "language_title": "Выбор языка",
   "rules_input": "С правилами согласен",
 
@@ -49,6 +50,13 @@
   "password": "Пароль",
   "is_have_account": "Уже есть аккаунт?",
   "is_not_have_account": "Нет аккаунта?",
+  "history_bread_crumbs": "История",
+  "record": "Запись",
+  "not_found": "не найдена",
+  "not_records": "Записей нет",
+  "create_record": "Создать запись",
+  "not_categories": "Категорий нет",
+  "create_category": "Создать категорию",
 
   "excess": "Превышение на",
   "left": "Осталось",
