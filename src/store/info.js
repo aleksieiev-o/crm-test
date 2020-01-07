@@ -4,15 +4,22 @@ import firebase from 'firebase/app'
 export default {
   state: {
     uInfo: null,
+    lastLocale: 'ru-RU',
   },
   getters: {
     getUInfo(state) {
       return state.uInfo
     },
+    getLastLocale(state) {
+      return state.lastLocale
+    },
   },
   mutations: {
     _setUInfo(state, payload) {
       state.uInfo = payload
+    },
+    _setLastLocale(state, payload) {
+      state.lastLocale = payload
     },
   },
   actions: {

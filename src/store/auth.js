@@ -24,8 +24,9 @@ export default {
         throw e
       }
     },
-    async logout({ commit }) {
+    async logout({ getters, commit }) {
       await firebase.auth().signOut()
+      commit('_setLastLocale', getters.getUInfo.locale)
       commit('_setUInfo', null)
       commit('_setCategories', [])
     },

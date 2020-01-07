@@ -7,6 +7,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import notification from '../helpers/notificationText'
+import localeFilter from '../helpers/filters/localeFilter'
 
 export default {
   name: 'LayoutEmpty',
@@ -17,8 +18,7 @@ export default {
   },
   watch: {
     getError(fbError) {
-      console.log(fbError)
-      this.$error(notification[fbError.code] || 'Что-то пошло не так...')
+      this.$error(localeFilter(notification[fbError.code]) || localeFilter('mess_something'))
     },
   },
 }

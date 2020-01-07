@@ -9,6 +9,11 @@ const locales = {
 }
 
 export default function (key) {
-  const locale = store.getters.getUInfo.locale || 'ru-RU'
-  return locales[locale][key] || `[Localize error]: key ${key} not found`
+  let loc = null
+  if (store.getters.getUInfo !== null) {
+    loc = store.getters.getUInfo.locale
+  } else {
+    loc = store.getters.getLastLocale
+  }
+  return locales[loc][key] || `[Localize error]: key ${key} not found`
 }

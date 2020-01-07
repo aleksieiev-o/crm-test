@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="onSubmit">
     <div class="card-content">
-      <span class="card-title">Домашняя бухгалтерия</span>
+      <span class="card-title">CRM</span>
       <div class="input-field">
         <input
           id="email"
@@ -13,12 +13,12 @@
         <small
           v-if="$v.email.$dirty && !$v.email.required"
           class="helper-text invalid">
-          Обязательное для заполнения поле
+          {{ 'required_field' | locale }}
         </small>
         <small
           v-else-if="$v.email.$dirty && !$v.email.email"
           class="helper-text invalid">
-          Введите корректный email
+          {{ 'input_email_validate' | locale }}
         </small>
       </div>
       <div class="input-field">
@@ -29,16 +29,16 @@
           v-model="password"
           :class="{ 'invalid': ($v.password.$dirty && !$v.password.required)
             || ($v.password.$dirty && $v.password.minLength < 6) }">
-        <label for="password">Пароль</label>
+        <label for="password">{{ 'password' | locale }}</label>
         <small
           v-if="$v.password.$dirty && !$v.password.required"
           class="helper-text invalid">
-          Обязательное для заполнения поле
+          {{ 'required_field' | locale }}
         </small>
         <small
           v-else-if="$v.password.$dirty && $v.password.minLength < 6"
           class="helper-text invalid">
-          Длина пароля не менее {{ $v.password.$params.minLength.min }} символов
+          {{ 'input_password_validate' | locale }} {{ $v.password.$params.minLength.min }} символов
         </small>
       </div>
     </div>
@@ -48,15 +48,15 @@
           class="btn waves-effect waves-light auth-submit"
           type="submit"
         >
-          Войти
+          {{ 'sign_in' | locale }}
           <i class="material-icons right">send</i>
         </button>
       </div>
 
       <p class="center">
-        Нет аккаунта?
+        {{ 'is_not_have_account' | locale }}
         <router-link to="/register">
-          Зарегистрироваться
+          {{ 'sign_up' | locale }}
         </router-link>
       </p>
     </div>
@@ -66,6 +66,7 @@
 <script>
 import { email, required, minLength } from 'vuelidate/lib/validators'
 import notification from '../helpers/notificationText'
+import localeFilter from '../helpers/filters/localeFilter'
 
 export default {
   name: 'AuthAuthorization',
@@ -75,7 +76,7 @@ export default {
   },
   mounted() {
     if (notification[this.$route.query.message]) {
-      this.$message(notification[this.$route.query.message])
+      this.$message(localeFilter(notification[this.$route.query.message]))
     }
   },
   methods: {

@@ -1,7 +1,5 @@
 
 {
-  "card_title": "Home accounting",
-
   "bill_title": "Bill",
   "bill_currency": "Currency account",
   "bill_course": "Exchange rates",
@@ -64,5 +62,6 @@
   "mess_login": "Log in or register",
   "mess_user_not_found": "There is no user record matching this identifier. The user may have been deleted.",
   "mess_wrong_pass": "The password is incorrect or the user does not have a password.",
-  "mess_use_email": "The email address is already being used by another account."
+  "mess_use_email": "The email address is already being used by another account.",
+  "mess_something": "Something went wrong..."
 }
