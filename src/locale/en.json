@@ -22,6 +22,7 @@
   "profile_title": "Profile",
 
   "record_detail_title": "Record details",
+  "record_popup_title": "Details",
 
   "login_title": "Login",
 
@@ -30,6 +31,7 @@
   "btn_update": "Update",
   "btn_create": "Create",
   "btn_create_new_record": "Create new record",
+  "btn_more_details": "Show more details",
 
   "input_name": "Name",
   "input_description": "Description",
@@ -63,6 +65,7 @@
   "create_record": "Create record",
   "not_categories": "Categories not found",
   "create_category": "Create category",
+  "costs_by_category": "Costs by category",
 
   "user_name_updated": "Username updated",
   "category_created": "Category created",

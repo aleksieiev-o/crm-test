@@ -22,6 +22,7 @@
   "profile_title": "Профиль",
 
   "record_detail_title": "Детали записи",
+  "record_popup_title": "Детали",
 
   "login_title": "Логин",
 
@@ -30,6 +31,7 @@
   "btn_update": "Обновить",
   "btn_create": "Создать",
   "btn_create_new_record": "Создать новую запись",
+  "btn_more_details": "Показать больше деталей",
 
   "input_name": "Имя",
   "input_description": "Описание",
@@ -63,6 +65,7 @@
   "create_record": "Создать запись",
   "not_categories": "Категорий нет",
   "create_category": "Создать категорию",
+  "costs_by_category": "Расходы по категориям",
 
   "user_name_updated": "Имя пользователя обновлено",
   "category_created": "Категория создана",

@@ -4,10 +4,6 @@
       <h3>{{ 'history_title' | locale }}</h3>
     </div>
 
-    <div class="history-chart">
-      <canvas ref="canvas"/>
-    </div>
-
     <pre-loader v-if="loading"/>
 
     <p
@@ -20,6 +16,24 @@
     </p>
 
     <section v-else>
+      <modal-window
+        :class-modal="['center']"
+        :id="'modal1'"
+        :button-text="'btn_more_details' | locale">
+
+        <template v-slot:header>
+          <h5 style="margin: 0">
+            {{ 'record_popup_title' | locale }}
+          </h5>
+        </template>
+
+        <template v-slot:content>
+          <div class="history-chart">
+            <canvas ref="canvas"/>
+          </div>
+        </template>
+      </modal-window>
+
       <history-table
       :list="currentPages"/>
 
@@ -41,12 +55,14 @@ import { mapGetters } from 'vuex'
 import { Pie } from 'vue-chartjs'
 import paginationMixin from '../helpers/mixins/paginationMixin'
 import HistoryTable from '../components/HistoryTable'
+import ModalWindow from '../components/ModalWindow'
 import localeFilter from '../helpers/filters/localeFilter'
 
 export default {
   name: 'AppHistory',
   components: {
     HistoryTable,
+    ModalWindow,
   },
   async mounted() {
     await this.$store.dispatch('loadCategories')
@@ -54,7 +70,8 @@ export default {
 
     this.createPagination(this.modifiedRecords)
 
-    this.createChart()
+    this.$nextTick()
+      .then(() => this.createChart())
 
     this.loading = false
   },
@@ -63,7 +80,7 @@ export default {
       this.renderChart({
         labels: this.getCategories.map(item => item.name),
         datasets: [{
-          label: 'Расходы по категориям',
+          label: localeFilter('costs_by_category'),
           data: this.getCategories.map(item => this.getRecords.reduce((total, val) => {
             if (val.categoryId === item.id && val.type === 'outcome') {
               // eslint-disable-next-line no-param-reassign
@@ -111,6 +128,7 @@ export default {
   },
   data: () => ({
     loading: true,
+    isOpenModal: false,
   }),
   metaInfo() {
     return {
