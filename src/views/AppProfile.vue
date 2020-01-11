@@ -4,7 +4,27 @@
       <h3>{{ 'profile_title' | locale }}</h3>
     </div>
 
-    <form class="form" @submit.prevent="editUserName">
+    <form class="form" @change="editUserInfo('lang')">
+      <div class="input-field">
+        <select
+          ref="profileSelect"
+          v-model="currentLanguage">
+          <option value="" disabled selected>{{ 'input_language' | locale }}</option>
+          <option
+            v-for="item of localeList"
+            :value="item.id"
+            :disabled="pending"
+            :key="item.id">
+            {{ item.name }}
+          </option>
+        </select>
+        <label>{{ 'language_title' | locale }}</label>
+      </div>
+    </form>
+
+    <br>
+
+    <form class="form" @submit.prevent="editUserInfo('name')">
       <div class="input-field">
         <input
           id="description"
@@ -18,19 +38,6 @@
           class="helper-text invalid">
           {{ 'input_name_validate' | locale }}
         </span>
-      </div>
-
-      <div class="language-switcher">
-        <h6>{{ 'language_title' | locale }}</h6>
-
-        <div class="switch">
-          <label>
-            English
-            <input type="checkbox" v-model="isRuLocale">
-            <span class="lever"></span>
-            Русский
-          </label>
-        </div>
       </div>
 
       <button
@@ -59,14 +66,21 @@ export default {
     this.$nextTick()
       .then(() => {
         M.updateTextFields()
+        this.select = M.FormSelect.init(this.$refs.profileSelect)
+        M.updateTextFields()
       })
     /* eslint-enable */
 
     this.name = this.getUInfo.name
-    this.isRuLocale = this.getUInfo.locale === 'ru-RU'
+    this.currentLanguage = this.getUInfo.locale
+  },
+  destroyed() {
+    if (this.select && this.select.destroy) {
+      this.select.destroy()
+    }
   },
   methods: {
-    async editUserName() {
+    async editUserInfo(prop) {
       if (this.$v.$invalid) {
         this.$v.$touch()
         return
@@ -74,11 +88,25 @@ export default {
 
       try {
         this.pending = true
-        await this.$store.dispatch('updateInfo', {
-          name: this.name,
-          locale: this.isRuLocale ? 'ru-RU' : 'en-US',
-        })
-        this.$message(localeFilter('user_name_updated'))
+
+        if (prop === 'name') {
+          if (this.name === this.getUInfo.name) {
+            this.$message(localeFilter('user_name_same'))
+            this.pending = false
+            return
+          }
+          await this.$store.dispatch('updateInfo', {
+            name: this.name,
+            locale: this.currentLanguage,
+          })
+          this.$message(localeFilter('user_name_updated'))
+        } else if (prop === 'lang') {
+          await this.$store.dispatch('updateInfo', {
+            locale: this.currentLanguage,
+          })
+          this.$message(localeFilter('language_updated'))
+        }
+
         this.pending = false
       } catch (e) {}
     },
@@ -87,13 +115,26 @@ export default {
     ...mapGetters({
       getUInfo: 'getUInfo',
     }),
+    localeList() {
+      return [
+        {
+          id: 'en-US',
+          name: 'English',
+        },
+        {
+          id: 'ru-RU',
+          name: 'Русский',
+        },
+      ]
+    },
     validateName() {
       return this.$v.name.$dirty && !this.$v.name.required
     },
   },
   data: () => ({
     name: '',
-    isRuLocale: true,
+    select: null,
+    currentLanguage: null,
     pending: false,
   }),
   metaInfo() {
@@ -103,13 +144,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-  .language-switcher {
-    margin-bottom: 24px;
-  }
-
-  .switch label .lever:after {
-    background-color: #ffb300;
-  }
-</style>

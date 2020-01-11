@@ -43,6 +43,7 @@
   "input_password_validate": "Длина пароля не менее",
   "input_amount_validate": "Введите сумму не менее",
   "language_title": "Выбор языка",
+  "input_language": "Языки",
   "rules_input": "С правилами согласен",
 
   "amount": "Сумма",
@@ -68,9 +69,11 @@
   "costs_by_category": "Расходы по категориям",
 
   "user_name_updated": "Имя пользователя обновлено",
+  "user_name_same": "Имена одинаковые",
   "category_created": "Категория создана",
   "category_updated": "Категория обновлена",
   "record_created": "Запись создана",
+  "language_updated": "Язык изменен",
   "not_funds_in_account": "Недостаточно средств на счете",
 
   "excess": "Превышение на",

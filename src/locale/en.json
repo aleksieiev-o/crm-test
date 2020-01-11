@@ -43,6 +43,7 @@
   "input_password_validate": "Password length at least",
   "input_amount_validate": "Enter a minimum amount",
   "language_title": "Choose language",
+  "input_language": "Languages",
   "rules_input": "I agree with the rules",
 
   "amount": "Amount",
@@ -68,9 +69,11 @@
   "costs_by_category": "Costs by category",
 
   "user_name_updated": "Username updated",
+  "user_name_same": "Names are the same",
   "category_created": "Category created",
   "category_updated": "Category updated",
   "record_created": "Record created",
+  "language_updated": "Language updated",
   "not_funds_in_account": "Insufficient funds in account",
 
   "excess": "Excess on",
