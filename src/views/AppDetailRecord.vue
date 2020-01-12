@@ -45,8 +45,8 @@ import localeFilter from '../helpers/filters/localeFilter'
 export default {
   name: 'AppDetailRecord',
   async mounted() {
-    await this.$store.dispatch('loadCategoryById', this.$route.params.id)
     await this.$store.dispatch('loadRecordById', this.$route.params.id)
+    await this.$store.dispatch('loadCategoryById', this.getRecord.categoryId)
     this.loading = false
   },
   computed: {

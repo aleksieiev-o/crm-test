@@ -26,7 +26,7 @@ export default {
     async createRecord({ commit, dispatch }, payload) {
       try {
         const userId = await dispatch('loadUserId')
-        await firebase.database().ref(`users/${userId}/records/${payload.categoryId}`).set({ ...payload })
+        await firebase.database().ref(`users/${userId}/records`).push({ ...payload })
       } catch (e) {
         commit('_setError', e)
         throw e

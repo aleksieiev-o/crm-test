@@ -22,7 +22,7 @@
       </td>
       <td>
         <router-link
-          :to="`/detail/${item.categoryId}`"
+          :to="`/detail/${item.id}`"
           tag="button"
           class="btn-small btn">
           <i class="material-icons">open_in_new</i>
