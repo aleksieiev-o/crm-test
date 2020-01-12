@@ -105,7 +105,7 @@ export default {
       })
     /* eslint-enable */
 
-    if (this.getCategories) {
+    if (this.getCategories.length > 0) {
       this.currentCategory = this.getCategories[0].id
     }
   },

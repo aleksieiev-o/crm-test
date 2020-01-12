@@ -38,6 +38,7 @@
       :list="currentPages"/>
 
       <paginate-mixin
+        v-if="pageCount > 1"
         class="center"
         v-model="page"
         :page-count="pageCount"
@@ -71,7 +72,11 @@ export default {
     this.createPagination(this.modifiedRecords)
 
     this.$nextTick()
-      .then(() => this.createChart())
+      .then(() => {
+        if (this.getRecords.length > 0) {
+          this.createChart()
+        }
+      })
 
     this.loading = false
   },

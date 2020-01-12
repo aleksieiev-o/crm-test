@@ -33,7 +33,8 @@
   "btn_create_new_record": "Create new record",
   "btn_more_details": "Show more details",
 
-  "input_name": "Name",
+  "input_name": "Edit your name",
+  "input_bill": "Edit your bill",
   "input_description": "Description",
   "input_name_validate": "Enter user name",
   "input_category_validate": "Enter category name",

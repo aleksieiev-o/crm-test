@@ -33,7 +33,8 @@
   "btn_create_new_record": "Создать новую запись",
   "btn_more_details": "Показать больше деталей",
 
-  "input_name": "Имя",
+  "input_name": "Редактировать имя",
+  "input_bill": "Редактировать бюджет",
   "input_description": "Описание",
   "input_name_validate": "Введите имя пользователя",
   "input_category_validate": "Введите название категории",
