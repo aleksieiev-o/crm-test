@@ -6,7 +6,7 @@
     tag="li"
     exact
     active-class="active"
-    :to="item.name">
+    :to="{ name: item.name }">
       <a class="waves-effect waves-amber darken-3 pointer">
         {{ item.title }}
       </a>
@@ -29,7 +29,7 @@ export default {
     sidebarLinks() {
       return [
         {
-          name: '/',
+          name: 'home',
           title: localeFilter('bill_title'),
         },
         {

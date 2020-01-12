@@ -22,7 +22,7 @@
       </td>
       <td>
         <router-link
-          :to="`/detail/${item.id}`"
+          :to="{ name: 'detail', params: { id: item.id} }"
           tag="button"
           class="btn-small btn">
           <i class="material-icons">open_in_new</i>
