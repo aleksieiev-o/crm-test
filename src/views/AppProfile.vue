@@ -2,6 +2,7 @@
   <div>
     <div class="page-title">
       <h3>{{ 'profile_title' | locale }}</h3>
+      <h4>{{ getUInfo.bill | course }}</h4>
     </div>
 
     <form class="form" @change="editUserInfo('lang')">
@@ -24,7 +25,7 @@
 
     <br>
 
-    <form class="form" @submit.prevent="editUserInfo('name')">
+    <form class="form" @submit.prevent="editUserInfo('info')">
       <div class="input-field">
         <input
           id="description"
@@ -40,6 +41,21 @@
         </span>
       </div>
 
+      <div class="input-field">
+        <input
+          id="createLimit"
+          type="number"
+          v-model.number="bill"
+          :class="{ invalid: validateLimit }"
+        >
+        <label for="createLimit">{{ 'input_bill' | locale }}</label>
+        <span
+          v-if="validateLimit"
+          class="helper-text invalid">
+            {{ 'input_limit_validate' | locale }} {{ $v.bill.$params.minValue.min }}
+          </span>
+      </div>
+
       <button
         class="btn waves-effect waves-light"
         type="submit"
@@ -53,13 +69,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { required } from 'vuelidate/lib/validators'
+import { minValue, required } from 'vuelidate/lib/validators'
 import localeFilter from '../helpers/filters/localeFilter'
 
 export default {
   name: 'AppProfile',
   validations: {
     name: { required },
+    bill: { minValue: minValue(0) },
   },
   mounted() {
     /* eslint-disable no-undef */
@@ -72,6 +89,7 @@ export default {
     /* eslint-enable */
 
     this.name = this.getUInfo.name
+    this.bill = this.getUInfo.bill
     this.currentLanguage = this.getUInfo.locale
   },
   destroyed() {
@@ -89,17 +107,18 @@ export default {
       try {
         this.pending = true
 
-        if (prop === 'name') {
-          if (this.name === this.getUInfo.name) {
-            this.$message(localeFilter('user_name_same'))
+        if (prop === 'info') {
+          if (this.name === this.getUInfo.name && this.bill === this.getUInfo.bill) {
+            this.$message(localeFilter('user_info_same'))
             this.pending = false
             return
           }
           await this.$store.dispatch('updateInfo', {
             name: this.name,
+            bill: this.bill,
             locale: this.currentLanguage,
           })
-          this.$message(localeFilter('user_name_updated'))
+          this.$message(localeFilter('user_info_updated'))
         } else if (prop === 'lang') {
           await this.$store.dispatch('updateInfo', {
             locale: this.currentLanguage,
@@ -130,9 +149,13 @@ export default {
     validateName() {
       return this.$v.name.$dirty && !this.$v.name.required
     },
+    validateLimit() {
+      return this.$v.bill.$dirty && !this.$v.bill.minValue
+    },
   },
   data: () => ({
     name: '',
+    bill: 0,
     select: null,
     currentLanguage: null,
     pending: false,

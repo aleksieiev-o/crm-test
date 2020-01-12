@@ -69,8 +69,8 @@
   "create_category": "Создать категорию",
   "costs_by_category": "Расходы по категориям",
 
-  "user_name_updated": "Имя пользователя обновлено",
-  "user_name_same": "Имена одинаковые",
+  "user_info_updated": "Информация о пользователе обновлена",
+  "user_info_same": "Информация о пользователе совпадает с текущей",
   "category_created": "Категория создана",
   "category_updated": "Категория обновлена",
   "record_created": "Запись создана",

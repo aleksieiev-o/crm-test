@@ -69,8 +69,8 @@
   "create_category": "Create category",
   "costs_by_category": "Costs by category",
 
-  "user_name_updated": "Username updated",
-  "user_name_same": "Names are the same",
+  "user_info_updated": "User information updated",
+  "user_info_same": "User information matches current",
   "category_created": "Category created",
   "category_updated": "Category updated",
   "record_created": "Record created",
