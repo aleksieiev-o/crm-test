@@ -25,6 +25,7 @@ import 'firebase/auth'
 import 'firebase/database'
 
 import PreLoader from './components/PreLoader'
+import vuetify from './plugins/vuetify'
 
 Vue.use(Vuelidate)
 Vue.use(VueMeta)
@@ -60,6 +61,7 @@ firebase.auth().onAuthStateChanged(() => {
     app = new Vue({
       router,
       store,
+      vuetify,
       render: (h) => h(App),
     }).$mount('#app')
   }
