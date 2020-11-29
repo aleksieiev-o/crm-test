@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { required, minValue } from 'vuelidate/lib/validators'
+import { required, minValue } from 'vuelidate/lib/validators';
 
 export default {
   name: 'CategoriesCreate',
@@ -54,41 +54,41 @@ export default {
   },
   mounted() {
     // eslint-disable-next-line no-undef
-    M.updateTextFields()
+    M.updateTextFields();
   },
   methods: {
     async createCategory() {
       if (this.$v.$invalid) {
-        this.$v.$touch()
-        return
+        this.$v.$touch();
+        return;
       }
 
       try {
         await this.$store.dispatch('createCategory', {
           name: this.name,
           limit: this.limit,
-        })
-        this.resetCategoryForm()
+        });
+        this.resetCategoryForm();
       } catch (e) {}
     },
     resetCategoryForm() {
-      this.name = ''
-      this.limit = 100
-      this.$emit('update-categories')
-      this.$v.reset()
+      this.name = '';
+      this.limit = 100;
+      this.$emit('update-categories');
+      this.$v.reset();
     },
   },
   computed: {
     validateName() {
-      return this.$v.name.$dirty && !this.$v.name.required
+      return this.$v.name.$dirty && !this.$v.name.required;
     },
     validateLimit() {
-      return this.$v.limit.$dirty && !this.$v.limit.minValue
+      return this.$v.limit.$dirty && !this.$v.limit.minValue;
     },
   },
   data: () => ({
     name: '',
     limit: 100,
   }),
-}
+};
 </script>

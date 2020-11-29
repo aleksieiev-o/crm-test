@@ -44,9 +44,9 @@ export default {
     courses: {
       type: Array,
       default() {
-        return ['RUB', 'USD', 'EUR']
+        return ['RUB', 'USD', 'EUR'];
       },
     },
   },
-}
+};
 </script>

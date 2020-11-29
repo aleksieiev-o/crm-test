@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import notification from '../helpers/notificationText'
-import localeFilter from '../helpers/filters/localeFilter'
+import { mapGetters } from 'vuex';
+import notification from '../helpers/notificationText';
+import localeFilter from '../helpers/filters/localeFilter';
 
 export default {
   name: 'LayoutEmpty',
@@ -18,8 +18,8 @@ export default {
   },
   watch: {
     getError(fbError) {
-      this.$error(localeFilter(notification[fbError.code]) || localeFilter('mess_something'))
+      this.$error(localeFilter(notification[fbError.code]) || localeFilter('mess_something'));
     },
   },
-}
+};
 </script>

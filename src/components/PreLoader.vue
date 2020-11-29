@@ -10,7 +10,7 @@
 <script>
 export default {
   name: 'PreLoader',
-}
+};
 </script>
 
 <style lang="scss" scoped>

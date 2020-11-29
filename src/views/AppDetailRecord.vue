@@ -39,15 +39,15 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import localeFilter from '../helpers/filters/localeFilter'
+import { mapGetters } from 'vuex';
+import localeFilter from '../helpers/filters/localeFilter';
 
 export default {
   name: 'AppDetailRecord',
   async mounted() {
-    await this.$store.dispatch('loadRecordById', this.$route.params.id)
-    await this.$store.dispatch('loadCategoryById', this.getRecord.categoryId)
-    this.loading = false
+    await this.$store.dispatch('loadRecordById', this.$route.params.id);
+    await this.$store.dispatch('loadCategoryById', this.getRecord.categoryId);
+    this.loading = false;
   },
   computed: {
     ...mapGetters({
@@ -61,9 +61,9 @@ export default {
           categoryName: this.getCategory.name,
           typeClass: this.getRecord.type === 'income' ? 'teal' : 'red',
           typeText: this.getRecord.type === 'income' ? localeFilter('income') : localeFilter('expense'),
-        }
+        };
       }
-      return null
+      return null;
     },
   },
   data: () => ({
@@ -72,7 +72,7 @@ export default {
   metaInfo() {
     return {
       title: this.$title('record_detail_title'),
-    }
+    };
   },
-}
+};
 </script>

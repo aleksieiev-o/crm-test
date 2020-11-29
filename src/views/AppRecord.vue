@@ -83,9 +83,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { required, minValue } from 'vuelidate/lib/validators'
-import localeFilter from '../helpers/filters/localeFilter'
+import { mapGetters } from 'vuex';
+import { required, minValue } from 'vuelidate/lib/validators';
+import localeFilter from '../helpers/filters/localeFilter';
 
 export default {
   name: 'AppRecord',
@@ -94,31 +94,31 @@ export default {
     description: { required },
   },
   async mounted() {
-    await this.$store.dispatch('loadCategories')
-    this.loading = false
+    await this.$store.dispatch('loadCategories');
+    this.loading = false;
 
     /* eslint-disable no-undef */
     this.$nextTick()
       .then(() => {
-        this.select = M.FormSelect.init(this.$refs.select)
-        M.updateTextFields()
-      })
+        this.select = M.FormSelect.init(this.$refs.select);
+        M.updateTextFields();
+      });
     /* eslint-enable */
 
     if (this.getCategories.length > 0) {
-      this.currentCategory = this.getCategories[0].id
+      this.currentCategory = this.getCategories[0].id;
     }
   },
   destroyed() {
     if (this.select && this.select.destroy) {
-      this.select.destroy()
+      this.select.destroy();
     }
   },
   methods: {
     async createNotation() {
       if (this.$v.$invalid) {
-        this.$v.$touch()
-        return
+        this.$v.$touch();
+        return;
       }
 
       try {
@@ -129,25 +129,25 @@ export default {
             amount: this.amount,
             description: this.description,
             date: new Date().toJSON(),
-          })
+          });
 
           const bill = this.type === 'income'
             ? this.getUInfo.bill + this.amount
-            : this.getUInfo.bill - this.amount
+            : this.getUInfo.bill - this.amount;
 
-          await this.$store.dispatch('updateInfo', { bill })
+          await this.$store.dispatch('updateInfo', { bill });
 
-          this.$message(localeFilter('record_created'))
-          this.resetRecordForm()
+          this.$message(localeFilter('record_created'));
+          this.resetRecordForm();
         } else {
-          this.$message(`${localeFilter('not_funds_in_account')} (${this.amount - this.getUInfo.bill})`)
+          this.$message(`${localeFilter('not_funds_in_account')} (${this.amount - this.getUInfo.bill})`);
         }
       } catch (e) {}
     },
     resetRecordForm() {
-      this.description = ''
-      this.amount = 1
-      this.$v.reset()
+      this.description = '';
+      this.amount = 1;
+      this.$v.reset();
     },
   },
   computed: {
@@ -157,16 +157,16 @@ export default {
     }),
     validateAmount() {
       return this.$v.amount.$dirty && !this.$v.amount.minValue
-        && this.$v.amount.$dirty && !this.$v.amount.required
+        && this.$v.amount.$dirty && !this.$v.amount.required;
     },
     validateDescription() {
-      return this.$v.description.$dirty && !this.$v.description.required
+      return this.$v.description.$dirty && !this.$v.description.required;
     },
     canCreateRecord() {
       if (this.notationCurrentValue === 'income') {
-        return true
+        return true;
       }
-      return this.getUInfo.bill >= this.amount
+      return this.getUInfo.bill >= this.amount;
     },
   },
   data: () => ({
@@ -190,7 +190,7 @@ export default {
   metaInfo() {
     return {
       title: this.$title('record_title'),
-    }
+    };
   },
-}
+};
 </script>

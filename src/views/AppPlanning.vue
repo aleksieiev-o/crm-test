@@ -36,17 +36,17 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import courseFilter from '../helpers/filters/courseFilter'
-import localeFilter from '../helpers/filters/localeFilter'
+import { mapGetters } from 'vuex';
+import courseFilter from '../helpers/filters/courseFilter';
+import localeFilter from '../helpers/filters/localeFilter';
 
 export default {
   name: 'AppPlanning',
   async mounted() {
-    await this.$store.dispatch('loadRecords')
-    await this.$store.dispatch('loadCategories')
+    await this.$store.dispatch('loadRecords');
+    await this.$store.dispatch('loadCategories');
 
-    this.loading = false
+    this.loading = false;
   },
   computed: {
     ...mapGetters({
@@ -61,19 +61,19 @@ export default {
             .filter((rec) => rec.categoryId === item.id)
             .filter((rec) => rec.type === 'outcome')
           // eslint-disable-next-line no-param-reassign,no-return-assign
-            .reduce((total, record) => total += parseInt(record.amount, 10), 0)
+            .reduce((total, record) => total += parseInt(record.amount, 10), 0);
 
-          const persent = (100 * spend) / item.limit
-          const progressPersent = persent > 100 ? 100 : persent
+          const persent = (100 * spend) / item.limit;
+          const progressPersent = persent > 100 ? 100 : persent;
           // eslint-disable-next-line no-nested-ternary
-          const progressColor = persent < 60 ? 'teal' : persent < 100 ? 'amber' : 'red'
-          const tooltipVal = item.limit - spend
-          const tooltip = `${tooltipVal < 0 ? localeFilter('excess') : localeFilter('left')} ${courseFilter(Math.abs(tooltipVal))}`
+          const progressColor = persent < 60 ? 'teal' : persent < 100 ? 'amber' : 'red';
+          const tooltipVal = item.limit - spend;
+          const tooltip = `${tooltipVal < 0 ? localeFilter('excess') : localeFilter('left')} ${courseFilter(Math.abs(tooltipVal))}`;
 
           return {
             ...item, progressPersent, progressColor, spend, tooltip,
-          }
-        }) : null
+          };
+        }) : null;
     },
   },
   data: () => ({
@@ -82,7 +82,7 @@ export default {
   metaInfo() {
     return {
       title: this.$title('planning_title'),
-    }
+    };
   },
-}
+};
 </script>

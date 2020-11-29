@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import { email, required, minLength } from 'vuelidate/lib/validators'
+import { email, required, minLength } from 'vuelidate/lib/validators';
 
 export default {
   name: 'AuthRegister',
@@ -97,22 +97,22 @@ export default {
   methods: {
     async onRegister() {
       if (this.$v.$invalid) {
-        this.$v.$touch()
-        return
+        this.$v.$touch();
+        return;
       }
 
       try {
-        this.pending = true
+        this.pending = true;
         await this.$store.dispatch('register', {
           email: this.email,
           password: this.password,
           name: this.name,
-        })
-        await this.$router.push('/')
+        });
+        await this.$router.push('/');
       } catch (e) {}
       setTimeout(() => {
-        this.pending = false
-      }, 1000)
+        this.pending = false;
+      }, 1000);
     },
   },
   data: () => ({
@@ -126,7 +126,7 @@ export default {
   metaInfo() {
     return {
       title: this.$title('registration_title'),
-    }
+    };
   },
-}
+};
 </script>

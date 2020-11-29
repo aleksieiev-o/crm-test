@@ -1,4 +1,4 @@
-import firebase from 'firebase/app'
+import firebase from 'firebase/app';
 
 export default {
   state: {
@@ -7,38 +7,38 @@ export default {
   },
   getters: {
     getUInfo(state) {
-      return state.uInfo
+      return state.uInfo;
     },
     getLastLocale(state) {
-      return state.lastLocale
+      return state.lastLocale;
     },
   },
   mutations: {
     _setUInfo(state, payload) {
-      state.uInfo = payload
+      state.uInfo = payload;
     },
     _setLastLocale(state, payload) {
-      state.lastLocale = payload
+      state.lastLocale = payload;
     },
   },
   actions: {
     async loadUInfo({ commit, dispatch }) {
       try {
-        const userId = await dispatch('loadUserId')
-        const info = (await firebase.database().ref(`/users/${userId}/info`).once('value')).val()
-        commit('_setUInfo', info)
+        const userId = await dispatch('loadUserId');
+        const info = (await firebase.database().ref(`/users/${userId}/info`).once('value')).val();
+        commit('_setUInfo', info);
       } catch (e) {}
     },
     async updateInfo({ getters, commit, dispatch }, payload) {
       try {
-        const userId = await dispatch('loadUserId')
-        const updateData = { ...getters.getUInfo, ...payload }
-        await firebase.database().ref(`/users/${userId}/info`).update(updateData)
-        commit('_setUInfo', updateData)
+        const userId = await dispatch('loadUserId');
+        const updateData = { ...getters.getUInfo, ...payload };
+        await firebase.database().ref(`/users/${userId}/info`).update(updateData);
+        commit('_setUInfo', updateData);
       } catch (e) {
-        commit('_setError', e)
-        throw e
+        commit('_setError', e);
+        throw e;
       }
     },
   },
-}
+};

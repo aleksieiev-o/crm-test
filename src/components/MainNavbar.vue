@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import DropDownList from './DropDownList'
-import localeFilter from '../helpers/filters/localeFilter'
+import DropDownList from './DropDownList';
+import localeFilter from '../helpers/filters/localeFilter';
 
 export default {
   name: 'MainNavbar',
@@ -28,32 +28,32 @@ export default {
   },
   mounted() {
     this.interval = setInterval(() => {
-      this.date = new Date()
-    }, 1000)
+      this.date = new Date();
+    }, 1000);
   },
   beforeDestroy() {
-    clearInterval(this.interval)
+    clearInterval(this.interval);
   },
   props: {
     userInfo: {
       type: Object,
       default() {
-        return { name: 'Empty' }
+        return { name: 'Empty' };
       },
     },
   },
   methods: {
     dropdownAction(val) {
       if (val === 0) {
-        this.$router.push('/profile')
+        this.$router.push('/profile');
       }
       if (val === 1) {
-        this.logout()
+        this.logout();
       }
     },
     async logout() {
-      await this.$store.dispatch('logout')
-      this.$router.push('/login?message=logout')
+      await this.$store.dispatch('logout');
+      this.$router.push('/login?message=logout');
     },
   },
   computed: {
@@ -71,12 +71,12 @@ export default {
           title: localeFilter('exit'),
           icon: 'assignment_return',
         },
-      ]
+      ];
     },
   },
   data: () => ({
     date: new Date(),
     interval: null,
   }),
-}
+};
 </script>

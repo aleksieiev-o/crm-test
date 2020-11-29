@@ -56,8 +56,8 @@
 </template>
 
 <script>
-import { required, minValue } from 'vuelidate/lib/validators'
-import localeFilter from '../helpers/filters/localeFilter'
+import { required, minValue } from 'vuelidate/lib/validators';
+import localeFilter from '../helpers/filters/localeFilter';
 
 export default {
   name: 'CategoriesEdit',
@@ -66,20 +66,20 @@ export default {
     limit: { minValue: minValue(100) },
   },
   created() {
-    const { id, name, limit } = this.categories[0]
-    this.currentCategory = id
-    this.name = name
-    this.limit = limit
+    const { id, name, limit } = this.categories[0];
+    this.currentCategory = id;
+    this.name = name;
+    this.limit = limit;
   },
   mounted() {
     /* eslint-disable no-undef */
-    this.select = M.FormSelect.init(this.$refs.select)
-    M.updateTextFields()
+    this.select = M.FormSelect.init(this.$refs.select);
+    M.updateTextFields();
     /* eslint-enable */
   },
   destroyed() {
     if (this.select && this.select.destroy) {
-      this.select.destroy()
+      this.select.destroy();
     }
   },
   props: {
@@ -92,15 +92,15 @@ export default {
             limit: 100,
             id: 'id',
           },
-        ]
+        ];
       },
     },
   },
   methods: {
     async editCategory() {
       if (this.$v.$invalid) {
-        this.$v.$touch()
-        return
+        this.$v.$touch();
+        return;
       }
 
       try {
@@ -108,17 +108,17 @@ export default {
           id: this.currentCategory,
           name: this.name,
           limit: this.limit,
-        })
-        this.$message(localeFilter('category_updated'))
+        });
+        this.$message(localeFilter('category_updated'));
       } catch (e) {}
     },
   },
   computed: {
     validateName() {
-      return this.$v.name.$dirty && !this.$v.name.required
+      return this.$v.name.$dirty && !this.$v.name.required;
     },
     validateLimit() {
-      return this.$v.limit.$dirty && !this.$v.limit.minValue
+      return this.$v.limit.$dirty && !this.$v.limit.minValue;
     },
   },
   data: () => ({
@@ -129,10 +129,10 @@ export default {
   }),
   watch: {
     currentCategory(id) {
-      const { name, limit } = this.categories.find((item) => item.id === id)
-      this.name = name
-      this.limit = limit
+      const { name, limit } = this.categories.find((item) => item.id === id);
+      this.name = name;
+      this.limit = limit;
     },
   },
-}
+};
 </script>

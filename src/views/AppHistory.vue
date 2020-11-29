@@ -52,12 +52,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { Pie } from 'vue-chartjs'
-import paginationMixin from '../helpers/mixins/paginationMixin'
-import HistoryTable from '../components/HistoryTable'
-import ModalWindow from '../components/ModalWindow'
-import localeFilter from '../helpers/filters/localeFilter'
+import { mapGetters } from 'vuex';
+import { Pie } from 'vue-chartjs';
+import paginationMixin from '../helpers/mixins/paginationMixin';
+import HistoryTable from '../components/HistoryTable';
+import ModalWindow from '../components/ModalWindow';
+import localeFilter from '../helpers/filters/localeFilter';
 
 export default {
   name: 'AppHistory',
@@ -66,26 +66,26 @@ export default {
     ModalWindow,
   },
   async mounted() {
-    await this.$store.dispatch('loadCategories')
-    await this.$store.dispatch('loadRecords')
+    await this.$store.dispatch('loadCategories');
+    await this.$store.dispatch('loadRecords');
 
-    this.createPagination(this.modifiedRecords)
+    this.createPagination(this.modifiedRecords);
 
     this.$nextTick()
       .then(() => {
         if (this.getRecords.length > 0) {
-          this.createChart()
+          this.createChart();
         }
-      })
+      });
 
-    this.loading = false
+    this.loading = false;
   },
   methods: {
     createRandomColor() {
-      const r = Math.floor(Math.random() * 256)
-      const g = Math.floor(Math.random() * 256)
-      const b = Math.floor(Math.random() * 256)
-      return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
     },
     createChart() {
       this.renderChart({
@@ -95,13 +95,13 @@ export default {
           data: this.getCategories.map((item) => this.getRecords.reduce((total, val) => {
             if (val.categoryId === item.id && val.type === 'outcome') {
               // eslint-disable-next-line no-param-reassign
-              total += +val.amount
+              total += +val.amount;
             }
-            return total
+            return total;
           }, 0)),
           backgroundColor: this.pieDiagramColors,
         }],
-      })
+      });
     },
   },
   computed: {
@@ -116,16 +116,16 @@ export default {
           categoryName: this.getCategories.find((cat) => cat.id === item.categoryId).name,
           typeClass: item.type === 'income' ? 'teal' : 'red',
           typeText: item.type === 'income' ? localeFilter('income') : localeFilter('expense'),
-        }))
+        }));
       }
-      return null
+      return null;
     },
     pieDiagramColors() {
-      const arr = []
+      const arr = [];
       for (let i = 0; i < this.getCategories.length; i += 1) {
-        arr.push(this.createRandomColor())
+        arr.push(this.createRandomColor());
       }
-      return arr
+      return arr;
     },
   },
   data: () => ({
@@ -135,11 +135,11 @@ export default {
   metaInfo() {
     return {
       title: this.$title('history_title'),
-    }
+    };
   },
   mixins: [
     paginationMixin,
   ],
   extends: Pie,
-}
+};
 </script>

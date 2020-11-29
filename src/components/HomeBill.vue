@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'HomeBill',
@@ -26,7 +26,7 @@ export default {
     userInfo: {
       type: Object,
       default() {
-        return { bill: 0 }
+        return { bill: 0 };
       },
     },
     rates: {
@@ -36,13 +36,13 @@ export default {
     courses: {
       type: Array,
       default() {
-        return ['RUB', 'USD', 'EUR']
+        return ['RUB', 'USD', 'EUR'];
       },
     },
   },
   methods: {
     getCurrensy(val) {
-      return Math.floor(this.baseRates * this.rates[val])
+      return Math.floor(this.baseRates * this.rates[val]);
     },
   },
   computed: {
@@ -50,8 +50,8 @@ export default {
       getUInfo: 'getUInfo',
     }),
     baseRates() {
-      return this.getUInfo.bill / (this.rates.RUB / this.rates.EUR)
+      return this.getUInfo.bill / (this.rates.RUB / this.rates.EUR);
     },
   },
-}
+};
 </script>

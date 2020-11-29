@@ -13,7 +13,6 @@ module.exports = {
     'import/extensions': ['error', 'never'],
     indent: ['error', 2],
     quotes: ['error', 'single'],
-    semi: ['error', 'never'],
     'no-empty': 0,
     'no-underscore-dangle': 0,
     'max-len': ['error', { code: 180 }],
@@ -21,4 +20,4 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
-}
+};

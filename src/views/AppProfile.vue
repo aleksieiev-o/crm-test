@@ -68,9 +68,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { minValue, required } from 'vuelidate/lib/validators'
-import localeFilter from '../helpers/filters/localeFilter'
+import { mapGetters } from 'vuex';
+import { minValue, required } from 'vuelidate/lib/validators';
+import localeFilter from '../helpers/filters/localeFilter';
 
 export default {
   name: 'AppProfile',
@@ -82,51 +82,51 @@ export default {
     /* eslint-disable no-undef */
     this.$nextTick()
       .then(() => {
-        M.updateTextFields()
-        this.select = M.FormSelect.init(this.$refs.profileSelect)
-        M.updateTextFields()
-      })
+        M.updateTextFields();
+        this.select = M.FormSelect.init(this.$refs.profileSelect);
+        M.updateTextFields();
+      });
     /* eslint-enable */
 
-    this.name = this.getUInfo.name
-    this.bill = this.getUInfo.bill
-    this.currentLanguage = this.getUInfo.locale
+    this.name = this.getUInfo.name;
+    this.bill = this.getUInfo.bill;
+    this.currentLanguage = this.getUInfo.locale;
   },
   destroyed() {
     if (this.select && this.select.destroy) {
-      this.select.destroy()
+      this.select.destroy();
     }
   },
   methods: {
     async editUserInfo(prop) {
       if (this.$v.$invalid) {
-        this.$v.$touch()
-        return
+        this.$v.$touch();
+        return;
       }
 
       try {
-        this.pending = true
+        this.pending = true;
 
         if (prop === 'info') {
           if (this.name === this.getUInfo.name && this.bill === this.getUInfo.bill) {
-            this.$message(localeFilter('user_info_same'))
-            this.pending = false
-            return
+            this.$message(localeFilter('user_info_same'));
+            this.pending = false;
+            return;
           }
           await this.$store.dispatch('updateInfo', {
             name: this.name,
             bill: this.bill,
             locale: this.currentLanguage,
-          })
-          this.$message(localeFilter('user_info_updated'))
+          });
+          this.$message(localeFilter('user_info_updated'));
         } else if (prop === 'lang') {
           await this.$store.dispatch('updateInfo', {
             locale: this.currentLanguage,
-          })
-          this.$message(localeFilter('language_updated'))
+          });
+          this.$message(localeFilter('language_updated'));
         }
 
-        this.pending = false
+        this.pending = false;
       } catch (e) {}
     },
   },
@@ -144,13 +144,13 @@ export default {
           id: 'ru-RU',
           name: 'Русский',
         },
-      ]
+      ];
     },
     validateName() {
-      return this.$v.name.$dirty && !this.$v.name.required
+      return this.$v.name.$dirty && !this.$v.name.required;
     },
     validateLimit() {
-      return this.$v.bill.$dirty && !this.$v.bill.minValue
+      return this.$v.bill.$dirty && !this.$v.bill.minValue;
     },
   },
   data: () => ({
@@ -163,7 +163,7 @@ export default {
   metaInfo() {
     return {
       title: this.$title('profile_title'),
-    }
+    };
   },
-}
+};
 </script>

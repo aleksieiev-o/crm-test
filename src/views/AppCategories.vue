@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import CategoriesCreate from '../components/CategoriesCreate'
-import CategoriesEdit from '../components/CategoriesEdit'
-import localeFilter from '../helpers/filters/localeFilter'
+import { mapGetters } from 'vuex';
+import CategoriesCreate from '../components/CategoriesCreate';
+import CategoriesEdit from '../components/CategoriesEdit';
+import localeFilter from '../helpers/filters/localeFilter';
 
 export default {
   name: 'AppCategories',
@@ -36,15 +36,15 @@ export default {
     CategoriesEdit,
   },
   async mounted() {
-    await this.$store.dispatch('loadCategories')
-    this.loading = false
+    await this.$store.dispatch('loadCategories');
+    this.loading = false;
   },
   methods: {
     async updateCategories() {
-      this.loading = true
-      await this.$store.dispatch('loadCategories')
-      this.loading = false
-      this.$message(localeFilter('category_created'))
+      this.loading = true;
+      await this.$store.dispatch('loadCategories');
+      this.loading = false;
+      this.$message(localeFilter('category_created'));
     },
   },
   computed: {
@@ -58,7 +58,7 @@ export default {
   metaInfo() {
     return {
       title: this.$title('categories_title'),
-    }
+    };
   },
-}
+};
 </script>

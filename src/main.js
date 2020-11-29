@@ -1,47 +1,47 @@
-import Vue from 'vue'
-import Vuelidate from 'vuelidate'
-import VueMeta from 'vue-meta'
+import Vue from 'vue';
+import Vuelidate from 'vuelidate';
+import VueMeta from 'vue-meta';
 
-import Paginate from 'vuejs-paginate'
+import Paginate from 'vuejs-paginate';
 
-import firebase from 'firebase/app'
+import firebase from 'firebase/app';
 
-import App from './App'
-import router from './router'
-import store from './store'
+import App from './App';
+import router from './router';
+import store from './store';
 
-import notificationsMessage from './helpers/notificationMessage'
-import appTitle from './helpers/appTitle'
+import notificationsMessage from './helpers/notificationMessage';
+import appTitle from './helpers/appTitle';
 
-import dateFilter from './helpers/filters/dateFilter'
-import courseFilter from './helpers/filters/courseFilter'
-import localeFilter from './helpers/filters/localeFilter'
+import dateFilter from './helpers/filters/dateFilter';
+import courseFilter from './helpers/filters/courseFilter';
+import localeFilter from './helpers/filters/localeFilter';
 
-import tooltip from './helpers/directives/tooltip'
+import tooltip from './helpers/directives/tooltip';
 
-import './registerServiceWorker'
-import 'materialize-css/dist/js/materialize.min'
-import 'firebase/auth'
-import 'firebase/database'
+import './registerServiceWorker';
+import 'materialize-css/dist/js/materialize.min';
+import 'firebase/auth';
+import 'firebase/database';
 
-import PreLoader from './components/PreLoader'
-import vuetify from './plugins/vuetify'
+import PreLoader from './components/PreLoader';
+import vuetify from './plugins/vuetify';
 
-Vue.use(Vuelidate)
-Vue.use(VueMeta)
-Vue.use(notificationsMessage)
-Vue.use(appTitle)
+Vue.use(Vuelidate);
+Vue.use(VueMeta);
+Vue.use(notificationsMessage);
+Vue.use(appTitle);
 
-Vue.filter('date', dateFilter)
-Vue.filter('course', courseFilter)
-Vue.filter('locale', localeFilter)
+Vue.filter('date', dateFilter);
+Vue.filter('course', courseFilter);
+Vue.filter('locale', localeFilter);
 
-Vue.directive('tooltip', tooltip)
+Vue.directive('tooltip', tooltip);
 
-Vue.component('PreLoader', PreLoader)
-Vue.component('PaginateMixin', Paginate)
+Vue.component('PreLoader', PreLoader);
+Vue.component('PaginateMixin', Paginate);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 firebase.initializeApp({
   apiKey: 'AIzaSyDENzKF8oLWE7Bp5i2bIps9SB3mSfYKUSg',
@@ -52,9 +52,9 @@ firebase.initializeApp({
   messagingSenderId: '282156607592',
   appId: '1:282156607592:web:2ae476beb6856bf5ab73dd',
   measurementId: 'G-77FH4JTGTC',
-})
+});
 
-let app = null
+let app = null;
 
 firebase.auth().onAuthStateChanged(() => {
   if (!app) {
@@ -63,6 +63,6 @@ firebase.auth().onAuthStateChanged(() => {
       store,
       vuetify,
       render: (h) => h(App),
-    }).$mount('#app')
+    }).$mount('#app');
   }
-})
+});

@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import HomeBill from '../components/HomeBill'
-import HomeCourse from '../components/HomeCourse'
+import { mapGetters } from 'vuex';
+import HomeBill from '../components/HomeBill';
+import HomeCourse from '../components/HomeCourse';
 
 export default {
   name: 'AppHome',
@@ -40,14 +40,14 @@ export default {
     HomeCourse,
   },
   async mounted() {
-    this.course = await this.$store.dispatch('loadCourse')
-    this.loading = false
+    this.course = await this.$store.dispatch('loadCourse');
+    this.loading = false;
   },
   methods: {
     async refreshDatas() {
-      this.loading = true
-      this.course = await this.$store.dispatch('loadCourse')
-      this.loading = false
+      this.loading = true;
+      this.course = await this.$store.dispatch('loadCourse');
+      this.loading = false;
     },
   },
   computed: {
@@ -63,7 +63,7 @@ export default {
   metaInfo() {
     return {
       title: this.$title('bill_title'),
-    }
+    };
   },
-}
+};
 </script>

@@ -65,9 +65,9 @@
 </template>
 
 <script>
-import { email, required, minLength } from 'vuelidate/lib/validators'
-import notification from '../helpers/notificationText'
-import localeFilter from '../helpers/filters/localeFilter'
+import { email, required, minLength } from 'vuelidate/lib/validators';
+import notification from '../helpers/notificationText';
+import localeFilter from '../helpers/filters/localeFilter';
 
 export default {
   name: 'AuthAuthorization',
@@ -77,27 +77,27 @@ export default {
   },
   mounted() {
     if (notification[this.$route.query.message]) {
-      this.$message(localeFilter(notification[this.$route.query.message]))
+      this.$message(localeFilter(notification[this.$route.query.message]));
     }
   },
   methods: {
     async onSubmit() {
       if (this.$v.$invalid) {
-        this.$v.$touch()
-        return
+        this.$v.$touch();
+        return;
       }
 
       try {
-        this.pending = true
+        this.pending = true;
         await this.$store.dispatch('login', {
           email: this.email,
           password: this.password,
-        })
-        await this.$router.push('/')
+        });
+        await this.$router.push('/');
       } catch (e) {}
       setTimeout(() => {
-        this.pending = false
-      }, 1000)
+        this.pending = false;
+      }, 1000);
     },
   },
   data: () => ({
@@ -109,7 +109,7 @@ export default {
   metaInfo() {
     return {
       title: this.$title('login_title'),
-    }
+    };
   },
-}
+};
 </script>

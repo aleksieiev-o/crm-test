@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import localeFilter from '../helpers/filters/localeFilter'
+import localeFilter from '../helpers/filters/localeFilter';
 
 export default {
   name: 'MainSidebar',
@@ -48,8 +48,8 @@ export default {
           name: 'categories',
           title: localeFilter('categories_title'),
         },
-      ]
+      ];
     },
   },
-}
+};
 </script>

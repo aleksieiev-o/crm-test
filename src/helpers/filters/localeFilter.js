@@ -1,19 +1,19 @@
-import store from '../../store'
-import ru from '../../locale/ru'
-import en from '../../locale/en'
+import store from '../../store';
+import ru from '../../locale/ru';
+import en from '../../locale/en';
 
 const locales = {
   'ru-RU': ru,
   'en-US': en,
-}
+};
 
 // eslint-disable-next-line func-names
 export default function (key) {
-  let loc = null
+  let loc = null;
   if (store.getters.getUInfo !== null) {
-    loc = store.getters.getUInfo.locale
+    loc = store.getters.getUInfo.locale;
   } else {
-    loc = store.getters.getLastLocale
+    loc = store.getters.getLastLocale;
   }
-  return locales[loc][key] || `[Localize error]: key ${key} not found`
+  return locales[loc][key] || `[Localize error]: key ${key} not found`;
 }

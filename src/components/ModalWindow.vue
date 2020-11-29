@@ -41,13 +41,13 @@ export default {
     // eslint-disable-next-line no-undef
     this.modal = M.Modal.init(this.$refs.modal, {
       ...this.listOptions,
-    })
+    });
   },
   beforeDestroy() {
     if (this.modal && this.modal.destroy) {
-      this.modal.destroy()
+      this.modal.destroy();
     }
-    this.modal = null
+    this.modal = null;
   },
   props: {
     id: {
@@ -74,7 +74,7 @@ export default {
   data: () => ({
     modal: null,
   }),
-}
+};
 </script>
 
 <style lang="scss">

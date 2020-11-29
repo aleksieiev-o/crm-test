@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import LayoutEmpty from './layouts/LayoutEmpty'
-import LayoutMain from './layouts/LayoutMain'
+import LayoutEmpty from './layouts/LayoutEmpty';
+import LayoutMain from './layouts/LayoutMain';
 
 export default {
   name: 'App',
@@ -18,10 +18,10 @@ export default {
   },
   computed: {
     selectedLayout() {
-      return this.$route.meta.layout ? `layout-${this.$route.meta.layout}` : 'layout-empty'
+      return this.$route.meta.layout ? `layout-${this.$route.meta.layout}` : 'layout-empty';
     },
   },
-}
+};
 </script>
 
 <style lang="scss">

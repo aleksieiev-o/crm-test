@@ -38,24 +38,24 @@ export default {
     this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
       ...this.listOptions,
       onOpenStart: () => {
-        this.arrow = !this.arrow
+        this.arrow = !this.arrow;
       },
       onCloseStart: () => {
-        this.arrow = !this.arrow
+        this.arrow = !this.arrow;
       },
-    })
+    });
   },
   beforeDestroy() {
     if (this.dropdown && this.dropdown.destroy) {
-      this.dropdown.destroy()
+      this.dropdown.destroy();
     }
-    this.dropdown = null
+    this.dropdown = null;
   },
   props: {
     userInfo: {
       type: Object,
       default() {
-        return { name: 'Empty' }
+        return { name: 'Empty' };
       },
     },
     listOptions: {
@@ -75,5 +75,5 @@ export default {
     arrow: false,
     dropdown: null,
   }),
-}
+};
 </script>

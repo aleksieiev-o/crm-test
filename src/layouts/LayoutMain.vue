@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import notification from '../helpers/notificationText'
-import MainNavbar from '../components/MainNavbar'
-import MainSidebar from '../components/MainSidebar'
-import MainActionButton from '../components/MainActionButton'
-import localeFilter from '../helpers/filters/localeFilter'
+import { mapGetters } from 'vuex';
+import notification from '../helpers/notificationText';
+import MainNavbar from '../components/MainNavbar';
+import MainSidebar from '../components/MainSidebar';
+import MainActionButton from '../components/MainActionButton';
+import localeFilter from '../helpers/filters/localeFilter';
 
 export default {
   name: 'LayoutMain',
@@ -37,7 +37,7 @@ export default {
   },
   async mounted() {
     if (!this.getUInfo) {
-      await this.$store.dispatch('loadUInfo')
+      await this.$store.dispatch('loadUInfo');
     }
   },
   computed: {
@@ -46,7 +46,7 @@ export default {
       getError: 'getError',
     }),
     locale() {
-      return this.$store.getters.getUInfo.locale
+      return this.$store.getters.getUInfo.locale;
     },
   },
   data: () => ({
@@ -54,8 +54,8 @@ export default {
   }),
   watch: {
     getError(fbError) {
-      this.$error(localeFilter(notification[fbError.code]) || localeFilter('mess_something'))
+      this.$error(localeFilter(notification[fbError.code]) || localeFilter('mess_something'));
     },
   },
-}
+};
 </script>
