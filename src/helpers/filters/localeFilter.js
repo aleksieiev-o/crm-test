@@ -1,4 +1,3 @@
-
 import store from '../../store'
 import ru from '../../locale/ru'
 import en from '../../locale/en'
@@ -8,6 +7,7 @@ const locales = {
   'en-US': en,
 }
 
+// eslint-disable-next-line func-names
 export default function (key) {
   let loc = null
   if (store.getters.getUInfo !== null) {

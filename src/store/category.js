@@ -1,4 +1,3 @@
-
 import firebase from 'firebase/app'
 
 export default {
@@ -47,7 +46,7 @@ export default {
       try {
         const userId = await dispatch('loadUserId')
         const categories = (await firebase.database().ref(`users/${userId}/categories`).once('value')).val() || {}
-        commit('_setCategories', Object.keys(categories).map(key => ({ ...categories[key], id: key })))
+        commit('_setCategories', Object.keys(categories).map((key) => ({ ...categories[key], id: key })))
       } catch (e) {
         commit('_setError', e)
         throw e

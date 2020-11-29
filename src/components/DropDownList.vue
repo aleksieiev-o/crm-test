@@ -18,7 +18,7 @@
           <li
           :key="key">
             <a
-            @click.prevent="$emit('dropdownAction', (item.value))"
+            @click.prevent="$emit('dropdown-action', (item.value))"
             class="black-text">
               <i class="material-icons">{{ item.icon }}</i>
               {{ item.title }}

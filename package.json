@@ -10,7 +10,7 @@
   "dependencies": {
     "chart.js": "^2.9.3",
     "core-js": "^3.4.3",
-    "firebase": "^7.6.0",
+    "firebase": "^8.1.1",
     "lodash": "^4.17.15",
     "materialize-css": "^1.0.0-rc.2",
     "register-service-worker": "^1.6.2",
@@ -29,12 +29,12 @@
     "@vue/cli-plugin-router": "^4.1.0",
     "@vue/cli-plugin-vuex": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
-    "@vue/eslint-config-airbnb": "^4.0.0",
+    "@vue/eslint-config-airbnb": "^5.1.0",
     "babel-eslint": "^10.0.3",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.0",
+    "eslint": "^7.14.0",
+    "eslint-plugin-vue": "^7.1.0",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.0",
     "vue-template-compiler": "^2.6.10"
   }
 }

@@ -89,10 +89,10 @@ export default {
     },
     createChart() {
       this.renderChart({
-        labels: this.getCategories.map(item => item.name),
+        labels: this.getCategories.map((item) => item.name),
         datasets: [{
           label: localeFilter('costs_by_category'),
-          data: this.getCategories.map(item => this.getRecords.reduce((total, val) => {
+          data: this.getCategories.map((item) => this.getRecords.reduce((total, val) => {
             if (val.categoryId === item.id && val.type === 'outcome') {
               // eslint-disable-next-line no-param-reassign
               total += +val.amount
@@ -111,9 +111,9 @@ export default {
     }),
     modifiedRecords() {
       if (this.getRecords && this.getCategories) {
-        return this.getRecords.map(item => ({
+        return this.getRecords.map((item) => ({
           ...item,
-          categoryName: this.getCategories.find(cat => cat.id === item.categoryId).name,
+          categoryName: this.getCategories.find((cat) => cat.id === item.categoryId).name,
           typeClass: item.type === 'income' ? 'teal' : 'red',
           typeText: item.type === 'income' ? localeFilter('income') : localeFilter('expense'),
         }))

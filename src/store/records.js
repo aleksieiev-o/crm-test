@@ -1,4 +1,3 @@
-
 import firebase from 'firebase/app'
 
 export default {
@@ -36,7 +35,7 @@ export default {
       try {
         const userId = await dispatch('loadUserId')
         const records = (await firebase.database().ref(`users/${userId}/records`).once('value')).val() || {}
-        commit('_setRecords', Object.keys(records).map(key => ({ ...records[key], id: key })))
+        commit('_setRecords', Object.keys(records).map((key) => ({ ...records[key], id: key })))
       } catch (e) {
         commit('_setError', e)
         throw e

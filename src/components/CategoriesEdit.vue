@@ -129,7 +129,7 @@ export default {
   }),
   watch: {
     currentCategory(id) {
-      const { name, limit } = this.categories.find(item => item.id === id)
+      const { name, limit } = this.categories.find((item) => item.id === id)
       this.name = name
       this.limit = limit
     },

@@ -1,4 +1,3 @@
-
 import localeFilter from './filters/localeFilter'
 
 /* eslint-disable no-param-reassign */

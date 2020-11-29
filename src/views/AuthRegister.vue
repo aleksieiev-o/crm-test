@@ -92,7 +92,7 @@ export default {
     email: { email, required },
     password: { required, minLength: minLength(6) },
     name: { required },
-    agree: { checked: v => v },
+    agree: { checked: (v) => v },
   },
   methods: {
     async onRegister() {

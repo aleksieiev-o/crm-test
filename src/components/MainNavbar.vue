@@ -2,7 +2,7 @@
   <nav class="navbar amber darken-1">
     <div class="nav-wrapper">
       <div class="navbar-left">
-        <a href="#" @click.prevent="$emit('sidebarAction')">
+        <a href="#" @click.prevent="$emit('sidebar-action')">
           <i class="material-icons black-text">menu</i>
         </a>
         <span class="black-text">{{ date | date('datetime') }}</span>

@@ -58,12 +58,12 @@ export default {
       return this.getCategories && this.getRecords
         ? this.getCategories.map((item) => {
           const spend = this.getRecords
-            .filter(rec => rec.categoryId === item.id)
-            .filter(rec => rec.type === 'outcome')
+            .filter((rec) => rec.categoryId === item.id)
+            .filter((rec) => rec.type === 'outcome')
           // eslint-disable-next-line no-param-reassign,no-return-assign
             .reduce((total, record) => total += parseInt(record.amount, 10), 0)
 
-          const persent = 100 * spend / item.limit
+          const persent = (100 * spend) / item.limit
           const progressPersent = persent > 100 ? 100 : persent
           // eslint-disable-next-line no-nested-ternary
           const progressColor = persent < 60 ? 'teal' : persent < 100 ? 'amber' : 'red'

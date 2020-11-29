@@ -74,7 +74,7 @@ export default {
     resetCategoryForm() {
       this.name = ''
       this.limit = 100
-      this.$emit('updateCategories')
+      this.$emit('update-categories')
       this.$v.reset()
     },
   },

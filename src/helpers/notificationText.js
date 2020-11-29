@@ -1,4 +1,3 @@
-
 export default {
   logout: 'mess_logout',
   login: 'mess_login',

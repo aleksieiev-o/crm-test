@@ -1,4 +1,3 @@
-
 import store from '../../store'
 
 export default function dateFilter(val, format = 'date') {

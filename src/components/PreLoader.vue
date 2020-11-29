@@ -102,11 +102,9 @@ export default {
           $yVal: $yVal + $stepSize;
         }
 
-
         #{$step * $n} {
           transform: translate($xVal, $yVal);
         }
-
 
         $n: $n + 1;
       }
