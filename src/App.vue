@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     selectedLayout() {
-      return `layout-${this.$route.meta.layout}` || 'layout-empty'
+      return this.$route.meta.layout ? `layout-${this.$route.meta.layout}` : 'layout-empty'
     },
   },
 }

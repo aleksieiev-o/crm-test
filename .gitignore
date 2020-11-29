@@ -22,5 +22,3 @@ yarn-error.log*
 
 # Other
 temp-templates/*
-*.sh
-vue.config.js
